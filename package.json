@@ -5,17 +5,23 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/turingschool-examples/webpack-starter-kit.git"
+    "url": "git+git@github.com:SteelyGlint/FortifendWebsite.git"
   },
-  "author": "Turing School of Software and Design",
-  "license": "MIT",
+  "homepage": "http://SteelyGlint.github.io/FortifendWebsite",
+  "author": "Ben",
+  "license": "Copyright",
   "devDependencies": {
     "chai": "^4.3.4",
-    "css-loader": "^5.2.6",
+    "css-loader": "^5.2.7",
     "eslint": "^7.27.0",
     "file-loader": "^6.2.0",
+    "fontmin-webpack": "^4.0.0",
+    "gh-pages": "^6.3.0",
+    "lqip-loader": "^2.2.1",
     "mocha": "^10.2.0",
     "mochapack": "^2.1.2",
+    "sass": "^1.85.0",
+    "sass-loader": "^16.0.5",
     "style-loader": "^3.3.4",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
@@ -25,6 +31,8 @@
     "start": "webpack serve",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   }
 }

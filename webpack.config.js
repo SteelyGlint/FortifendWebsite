@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   "mode": "none",
-  "entry": "./src/scripts.js",
+  "entry": "./src/index.js",
   "output": {
     "path": __dirname + '/dist',
     "filename": "bundle.js"
@@ -20,11 +20,23 @@ module.exports = {
         use: [
             { loader: 'style-loader' },
             { loader: 'css-loader' },
+            { loader: 'sass-loader' },
         ]
-    },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         use: [
+          // { // breaks background
+          //   loader: 'lqip-loader',
+          //   options: {
+          //     base64: true,
+          //     palette: false
+          //   }
+          // },
           {
             loader: 'file-loader',
             options: {
@@ -38,3 +50,4 @@ module.exports = {
     ]
   }
 };
+// TODO: https://www.npmjs.com/package/fontmin-webpack
