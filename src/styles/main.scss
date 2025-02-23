@@ -9,16 +9,53 @@ $accent-color: #5eef3d;
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
 $border-radius: 8px;
+$page-bg: rgba(37, 29, 36, 1.0);
 
 // Base styles
 html {
   //font-size: 62.5%;
-  background: url('../images/capsule.png');
-  background-color: rgba(0, 0, 0, 1.0);
-  background-blend-mode: lighten;
+  background: url('../images/capsule4.png');
+
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: 100%;
+  //background-attachment: scroll;
+  background-position: center 0;
+  background-size: 80%;
+  background-color: $page-bg;
+
+  background-blend-mode: normal;
+}
+
+//html {
+//  background: linear-gradient(
+//                  to bottom,
+//                  #87d6d6 0%,    /* Match top sky color */
+//                  #000000 85%,   /* Transition to black, pushed lower for larger image */
+//                  #000000 100%   /* Maintain black to bottom */
+//  );
+//  min-height: 100vh;
+//  background-repeat: no-repeat;
+//  background-attachment: fixed;
+//}
+//
+//.game-background {
+//  background-image: url('../images/capsule2.png');
+//  background-position: center 0;
+//  background-repeat: no-repeat;
+//  background-size: 75% auto;  /* Fill width while maintaining aspect ratio */
+//  height: 100vh;              /* Take up full viewport height */
+//  width: 100%;               /* Take up full width */
+//  position: fixed;           /* Fix position relative to viewport */
+//  top: 0;
+//  left: 0;
+//  z-index: 1;               /* Ensure image sits above gradient */
+//}
+
+/* Add a container for your content that sits above the background */
+.content-container {
+  position: relative;
+  z-index: 2;
 }
 
 body {
@@ -87,18 +124,17 @@ body {
   }
 
   @media (min-width: 1501px) and (max-width: 2000px) {
-    max-width: 1200px;
+    max-width: 1400px;
   }
 
   @media (min-width: 769px) and (max-width: 1500px) {
-    max-width: 400px;
+    max-width: 1400px;
   }
 
   @media (max-width: 764px) {
-    max-width: 400px;
+    max-width: 700px;
     padding: 0 15px;
   }
-
 }
 
 .banner-image {
@@ -106,6 +142,20 @@ body {
   width: 100%;
   image-rendering: pixelated;
   border-radius: $border-radius $border-radius 0 0;
+}
+
+.image-placeholder {
+  display: inline-block;
+  //margin-bottom: 420px;
+  margin: calc(100vh * 0.3552 + 87.6051px) 0;
+  //transition: .3s ease-in-out;
+
+  @media (max-width: 768px) {
+    //flex: 0 0 100%;
+    //max-width: none;
+    margin: 200px;
+  }
+
 }
 
 // Content sections
@@ -124,16 +174,27 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat no-repeat;
   background-position: center center;
   background-color: black;
+  background-blend-mode: normal;
+  image-rendering: pixelated;
+}
+
+
+// description styles
+p.description {
+  font-size: 3.4rem;
+  font-family: $description-font;
+  border-radius: $border-radius;
+  line-height: 0.8;
 }
 
 // Gallery styles
 .gallery-container {
   width: 100%;
-  max-width: 2400px; // Increased for large monitors
+  //max-width: 2400px; // Increased for large monitors
   margin: 0 auto;
 }
 
@@ -164,11 +225,6 @@ body {
       max-width: calc(50% - 10px);
     }
   }
-}
-
-
-.artwork-image {
-
 }
 
 .artwork-item {
@@ -273,12 +329,4 @@ blockquote {
   }
 }
 
-
-// description styles
-p.description {
-  font-size: 3.4rem;
-  font-family: $description-font;
-  border-radius: $border-radius;
-  line-height: 0.8;
-}
 

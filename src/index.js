@@ -8,13 +8,19 @@ import './styles/main.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 import './images/logo.jpg';
-import './images/capsule.png';
+// import './images/capsule.png';
+// import './images/capsule1.png';
+// import './images/capsule2.png';
+// import './images/capsule3.png';
+import './images/capsule4.png';
+
 import './images/icon.png';
 
 import './images/icon.png';
 import './images/boon_placeholder.png';
 import './images/title-logo.png';
 
+import './images/screenshot1-orthogonal.jpg'
 
 
 import './images/mail.svg';
