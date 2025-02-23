@@ -28,15 +28,31 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         use: [
-          // { // breaks background
-          //   loader: 'lqip-loader',
+          // {
+          //   loader: 'responsive-loader',
           //   options: {
-          //     base64: true,
-          //     palette: false
+          //     sizes: [320, 640, 960, 1200, 1800, 2400],
+          //     // name: '[name]-[size].[ext]',
+          //     outputPath: 'images/',
+          //     publicPath: 'images/'
           //   }
           // },
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+              publicPath: 'images/'
+            }
+          }
+        ],
+        type: 'javascript/auto',
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
           {
             loader: 'file-loader',
             options: {

@@ -13,8 +13,8 @@ import './images/icon.png';
 
 import './images/icon.png';
 import './images/boon_placeholder.png';
-// import './images/logo-fortifend.jpg';
 import './images/title-logo.png';
+
 
 
 import './images/mail.svg';
@@ -37,8 +37,3 @@ const init = () => {
         });
     });
 }
-
-function getPics() {
-
-}
-
