@@ -1,4 +1,5 @@
 const path = require('path');
+// const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   "mode": "none",
@@ -10,7 +11,9 @@ module.exports = {
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist')
-    }
+    },
+    port: 32080, // Change this number to your desired port
+    open: true // Automatically open browser
   },
   "devtool": "source-map",
   "module": {

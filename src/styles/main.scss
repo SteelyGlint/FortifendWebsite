@@ -16,29 +16,19 @@ html {
   //font-size: 62.5%;
   background: url('../images/capsule4.png');
 
-  min-height: 100vh;
+  //min-height: 100vh;
+  min-width: 100vw;
   background-repeat: no-repeat;
   background-attachment: scroll;
   //background-attachment: scroll;
   background-position: center 0;
-  background-size: 80%;
+  background-size: 100%;
   background-color: $page-bg;
 
   background-blend-mode: normal;
 }
 
-//html {
-//  background: linear-gradient(
-//                  to bottom,
-//                  #87d6d6 0%,    /* Match top sky color */
-//                  #000000 85%,   /* Transition to black, pushed lower for larger image */
-//                  #000000 100%   /* Maintain black to bottom */
-//  );
-//  min-height: 100vh;
-//  background-repeat: no-repeat;
-//  background-attachment: fixed;
-//}
-//
+
 //.game-background {
 //  background-image: url('../images/capsule2.png');
 //  background-position: center 0;
@@ -72,7 +62,8 @@ body {
 // Typography
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-  text-rendering: optimizeLegibility;
+  //text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -141,13 +132,14 @@ body {
   object-fit: contain;
   width: 100%;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
   border-radius: $border-radius $border-radius 0 0;
 }
 
 .image-placeholder {
   display: inline-block;
   //margin-bottom: 420px;
-  margin: calc(100vh * 0.3552 + 87.6051px) 0;
+  margin: calc(100vh * 0.5552 + 87.6051px) 0;
   //transition: .3s ease-in-out;
 
   @media (max-width: 768px) {
@@ -168,27 +160,41 @@ body {
 
 #fullpage {
   display: none;
-  position: absolute;
-  z-index: 9999;
+  position: fixed;
+  z-index: 9998;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat no-repeat;
-  background-position: center center;
-  background-color: black;
-  background-blend-mode: normal;
-  image-rendering: pixelated;
+  background-color: rgba(0, 0, 0, 0.85); /* Add overlay background */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  .fullpage-image {
+    width: 90%; /* Reduced from 100% to create margin */
+    height: 90%; /* Reduced from 100% to create margin */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    transform: scale(1); /* Integer scaling for pixel art */
+    transform-origin: center center;
+    margin: 5vh auto; /* Add vertical and horizontal margin */  }
 }
 
 
 // description styles
 p.description {
-  font-size: 3.4rem;
+  //font-size: 3.1rem;
+  font-size: 64px;
   font-family: $description-font;
   border-radius: $border-radius;
   line-height: 0.8;
+
+  //-webkit-font-smoothing: subpixel-antialiased;
+  //font-smooth: never;
 }
 
 // Gallery styles
@@ -241,6 +247,7 @@ p.description {
     object-fit: contain;
     width: 100%;
     image-rendering: pixelated;
+    image-rendering: crisp-edges;
     border-radius: $border-radius $border-radius 0 0;
     display: block;
     //@media (max-width: 768px) {
@@ -257,30 +264,28 @@ p.description {
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 16px color.adjust($card-bg, $alpha: -0.4);
-    background: color.adjust($card-bg, $alpha: 1);
-
-    .artwork-item {
-      display: none;
-    }
+    background: color.adjust($card-bg, $alpha: 0);
   }
 }
 
 .artwork-info {
   position: relative;
   background-color: #3c3f41;
+  font-size: 2.4rem;
   color: #fff;
   padding: 10px 20px;
-  font-size: 20px;
   text-align: center;
 
   .artwork-title {
-    font-size: 2.4rem;
+    font-size: 48px;
+
     margin: 0 0 15px 0;
     color: $text-light;
   }
 
   .artwork-description {
-    font-size: 1.4rem;
+    display: none;
+    font-size: 32px;
     color: color.adjust($text-light, $alpha: -0.15);
     line-height: 1.4;
   }
