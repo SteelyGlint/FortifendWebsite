@@ -99,7 +99,10 @@ a {
 header {
   margin-bottom: 25px;
   border-radius: $border-radius;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 footer {
   background: $card-bg;
@@ -110,6 +113,10 @@ footer {
 
 // Adjust content container width for larger screens
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   max-width: 2400px; // Increased to match gallery container
   margin: 25px auto;
   padding: 0 30px; // Increased padding for larger screens
@@ -163,42 +170,52 @@ body {
   z-index: -1; /* Place behind all other content */
 }
 
+
+/* Update the banner image class for pixel-perfect rendering */
 .banner-image {
-  //object-fit: contain;
-  //width: 100%;
+  /* Pixel-perfect rendering properties */
   image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE */
+
+  /* Center the image */
+  display: block;
+  margin: 0 auto;
+
+  /* Prevent distortion */
+  max-width: 100%;
+  height: auto;
+
+  /* Maintain aspect ratio and original pixel grid */
+  transform-origin: center;
+
+  /* Original styles */
   border-radius: $border-radius $border-radius 0 0;
-    // Discrete scales at specific breakpoints
-  //object-fit: cover;
-  //width: 50vw;
-  min-width: 25vw;
+
+  /* Add a container around the image with a specific width if needed */
+  /* Example - adjust based on actual image dimensions */
+  //width: calc(min(800px, 100%));
 }
 
 .image-placeholder {
-  //display: inline-block;
-  //margin-bottom: 420px;
   //margin-top: calc(100vh * 0.3552 + 47.6051px);
-  //transition: 2.3s ease-in-out;
-  //
-  //margin-top: 300px;
-  //// Create a proper grid layout
+  margin-bottom: 450px; /* More specific and forceful for testing */
+
   @media (min-width: 2001px) { // 4 items per row for very large screens
-    margin-top: 400px;
+    margin-bottom: 650px;
   }
 
   @media (min-width: 1501px) and (max-width: 2000px) { // 3 items per row
-    margin-top: 450px;
+    margin-bottom: 650px;
   }
 
   @media (min-width: 769px) and (max-width: 1500px) { // 2 items per row
-    margin-top: 250px;
+    margin-bottom: 400px;
   }
 
   @media (max-width: 768px) {
-    //flex: 0 0 100%;
-    //max-width: none;
-    margin-top: 175px;
+    margin-bottom: 175px;
   }
 
 }
@@ -209,6 +226,9 @@ body {
   padding: 25px 25px 25px 25px;
   margin-bottom: 25px;
   border-radius: $border-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #fullpage {
@@ -254,6 +274,7 @@ body {
   // Create a proper grid layout
   @media (min-width: 2001px) { // 4 items per row for very large screens
     .artwork-item {
+      //background: color.adjust($card-bg, $alpha: 0.9);
       flex: 0 0 calc(25% - 15px);
       max-width: calc(25% - 15px);
     }
@@ -261,6 +282,7 @@ body {
 
   @media (min-width: 1501px) and (max-width: 2000px) { // 3 items per row
     .artwork-item {
+      //background: color.adjust($card-bg, $alpha: 0.9);
       flex: 0 0 calc(33.333% - 14px);
       max-width: calc(33.333% - 14px);
     }
@@ -268,6 +290,7 @@ body {
 
   @media (min-width: 764px) and (max-width: 1500px) { // 2 items per row
     .artwork-item {
+      //background: color.adjust($card-bg, $alpha: 0.9);
       flex: 0 0 calc(50% - 10px);
       max-width: calc(50% - 10px);
     }
@@ -275,7 +298,6 @@ body {
 }
 
 .artwork-item {
-  background: color.adjust($card-bg, $alpha: 0.9);
   border-radius: $border-radius;
   box-shadow: 0 4px 12px color.adjust($card-bg, $alpha: -0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -313,9 +335,8 @@ body {
   object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  width: 25vw;
-  max-width: 100vw;
-  object-fit: contain;
+
+  max-width: 100%;
   border-radius: $border-radius $border-radius 0 0;
 }
 
