@@ -14,19 +14,22 @@ $page-bg: rgba(37, 29, 36, 1.0);
 
 // Base styles
 html {
-  //font-size: 62.5%;
   font-size: 16px; // Base size to calculate rem from
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+
   //background: url('../images/capsule5.png');
 
   //min-height: 100vh;
-  min-width: 100vw;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+
+  //background-repeat: no-repeat;
   //background-attachment: scroll;
-  background-position: center 0;
-  background-size:  100%;
+  //background-attachment: scroll;
+  //background-position: center 0;
+  //background-size:  100%;
   background-color: $page-bg;
-  background-blend-mode: normal;
+  //background-blend-mode: normal;
 
   @media (max-width: 768px) {
     font-size: 14px; // Smaller base on mobile
