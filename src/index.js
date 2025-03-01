@@ -13,15 +13,18 @@ import './images/logo.jpg';
 // import './images/capsule2.png';
 // import './images/capsule3.png';
 import './images/capsule4.png';
+import './images/capsule5.png';
 
 import './images/icon.png';
 
 import './images/icon.png';
 import './images/boon_placeholder.png';
 import './images/title-logo.png';
-import './images/screenshot1-orthogonal.jpg'
-import './images/screenshot_terrain_hud.jpg'
-import './images/screenshot_hud_trade.jpg'
+import './images/screenshot1-orthogonal.jpg';
+import './images/screenshot_terrain_hud.jpg';
+import './images/screenshot_hud_trade.jpg';
+
+import './images/trailer_combat_simple.gif';
 
 import './images/mail.svg';
 import './images/mailbox.svg';

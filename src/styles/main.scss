@@ -1,10 +1,11 @@
 @use "sass:color";
+@use 'sass:math' as math;
 @use 'fonts' as *;
 
 // Variables
-$header-font: 'alagard';
-$body-font: 'RobotoMono', monospace;
-$description-font: 'monaco';
+$header-font: 'monaco';
+$body-font: 'alagard';
+$description-font:  'monaco'; //'RobotoMono', monospace;
 $accent-color: #5eef3d;
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
@@ -14,7 +15,8 @@ $page-bg: rgba(37, 29, 36, 1.0);
 // Base styles
 html {
   //font-size: 62.5%;
-  background: url('../images/capsule4.png');
+  font-size: 16px; // Base size to calculate rem from
+  //background: url('../images/capsule5.png');
 
   //min-height: 100vh;
   min-width: 100vw;
@@ -22,48 +24,39 @@ html {
   background-attachment: scroll;
   //background-attachment: scroll;
   background-position: center 0;
-  background-size: 100%;
+  background-size:  100%;
   background-color: $page-bg;
-
   background-blend-mode: normal;
-}
 
+  @media (max-width: 768px) {
+    font-size: 14px; // Smaller base on mobile
+  }
+  //overflow-x: hidden; /* Prevent horizontal scrolling */
 
-//.game-background {
-//  background-image: url('../images/capsule2.png');
-//  background-position: center 0;
-//  background-repeat: no-repeat;
-//  background-size: 75% auto;  /* Fill width while maintaining aspect ratio */
-//  height: 100vh;              /* Take up full viewport height */
-//  width: 100%;               /* Take up full width */
-//  position: fixed;           /* Fix position relative to viewport */
-//  top: 0;
-//  left: 0;
-//  z-index: 1;               /* Ensure image sits above gradient */
-//}
-
-/* Add a container for your content that sits above the background */
-.content-container {
-  position: relative;
-  z-index: 2;
 }
 
 body {
-  font-size: 1.5em;
-  line-height: 1.6;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.0;
   font-weight: 400;
   font-family: $body-font;
   color: $text-light;
   max-width: 1200px;
   margin: 25px auto;
   padding: 0 20px;
+  letter-spacing: 0rem;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+
 }
 
 // Typography
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   //text-rendering: optimizeLegibility;
-  text-rendering: geometricPrecision;
+  //text-rendering: geometricPrecision;
+  text-rendering: optimizeSpeed;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -71,12 +64,25 @@ h1, h2, h3, h4, h5, h6 {
   color: $text-light;
 }
 
-h1 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h2 { font-size: 3.0rem; line-height: 1.3; letter-spacing: -.1rem; }
-h3 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
-h4 { font-size: 1.8rem; line-height: 1.5; letter-spacing: -.05rem; }
-h5 { font-size: 1.5rem; line-height: 1.6; letter-spacing: 0; }
-h6 { font-size: 1.4rem; line-height: 1.6; letter-spacing: 0; }
+h1 { font-size: 6rem; line-height: 1.25; letter-spacing: 0rem; }
+h2 { font-size: 6rem; line-height: 1.3; letter-spacing: 0rem; }
+h3 { font-size: 5rem; line-height: 1.35; letter-spacing: 0rem; }
+h4 { font-size: 5rem; line-height: 1.5; letter-spacing: 0rem; }
+h5 { font-size: 3rem; line-height: 1.6; letter-spacing: 0rem; }
+h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
+
+
+.pixel-perfect-text {
+  font-size: 32px; // Base font size (usually pixel font's design size)
+  // Use math.div() instead of / operator
+  $base-width: 320px;
+  $scale-factor: math.floor(math.div(100vw, $base-width));
+  $scale-factor: math.max(1, $scale-factor);
+
+  transform-origin: left top;
+  transform: scale($scale-factor);
+}
+
 
 // Links
 a {
@@ -119,33 +125,80 @@ body {
   }
 
   @media (min-width: 769px) and (max-width: 1500px) {
-    max-width: 1400px;
+    max-width: 800px;
   }
 
-  @media (max-width: 764px) {
+  @media (max-width: 768px) {
     max-width: 700px;
     padding: 0 15px;
   }
 }
 
+.cropped-image {
+  margin: 0px;
+  padding: 0px;
+  //margin-top: 0;       /* Ensure no top margin */
+  //padding-top: 0;      /* Ensure no top padding */
+  width: 100%; /* Container width */
+  height: 300px; /* Fixed height */
+  overflow: hidden; /* Hide parts outside container */
+  //position: relative;
+  overflow: hidden;
+
+}
+
+.cropped-image img {
+  /* Center the image horizontally */
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Optional: adjust vertical position */
+  //top: 0;
+  max-width: none;     /* IMPORTANT: Prevents the image from resizing to fit container */
+
+  /* Maintain aspect ratio */
+  height: 100%;
+  width: auto;
+  z-index: -1; /* Place behind all other content */
+}
+
 .banner-image {
-  object-fit: contain;
-  width: 100%;
+  //object-fit: contain;
+  //width: 100%;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   border-radius: $border-radius $border-radius 0 0;
+    // Discrete scales at specific breakpoints
+  //object-fit: cover;
+  //width: 50vw;
+  min-width: 25vw;
 }
 
 .image-placeholder {
-  display: inline-block;
+  //display: inline-block;
   //margin-bottom: 420px;
-  margin: calc(100vh * 0.5552 + 87.6051px) 0;
-  //transition: .3s ease-in-out;
+  //margin-top: calc(100vh * 0.3552 + 47.6051px);
+  //transition: 2.3s ease-in-out;
+  //
+  //margin-top: 300px;
+  //// Create a proper grid layout
+  @media (min-width: 2001px) { // 4 items per row for very large screens
+    margin-top: 400px;
+  }
+
+  @media (min-width: 1501px) and (max-width: 2000px) { // 3 items per row
+    margin-top: 450px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1500px) { // 2 items per row
+    margin-top: 250px;
+  }
 
   @media (max-width: 768px) {
     //flex: 0 0 100%;
     //max-width: none;
-    margin: 200px;
+    margin-top: 175px;
   }
 
 }
@@ -179,22 +232,10 @@ body {
     background-color: transparent;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    transform: scale(1); /* Integer scaling for pixel art */
+    //transform: scale(1); /* Integer scaling for pixel art */
     transform-origin: center center;
-    margin: 5vh auto; /* Add vertical and horizontal margin */  }
-}
-
-
-// description styles
-p.description {
-  //font-size: 3.1rem;
-  font-size: 64px;
-  font-family: $description-font;
-  border-radius: $border-radius;
-  line-height: 0.8;
-
-  //-webkit-font-smoothing: subpixel-antialiased;
-  //font-smooth: never;
+    margin: 5vh auto; /* Add vertical and horizontal margin */
+  }
 }
 
 // Gallery styles
@@ -268,6 +309,17 @@ p.description {
   }
 }
 
+.artwork-image-large {
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  width: 25vw;
+  max-width: 100vw;
+  object-fit: contain;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+
 .artwork-info {
   position: relative;
   background-color: #3c3f41;
@@ -277,17 +329,14 @@ p.description {
   text-align: center;
 
   .artwork-title {
-    font-size: 48px;
-
     margin: 0 0 15px 0;
     color: $text-light;
+    color: color.adjust($text-light, $alpha: -0.15);
   }
 
   .artwork-description {
     display: none;
-    font-size: 32px;
     color: color.adjust($text-light, $alpha: -0.15);
-    line-height: 1.4;
   }
 }
 
