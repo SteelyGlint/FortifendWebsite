@@ -4,9 +4,10 @@
 
 // Variables
 $header-font: 'monaco';
-$body-font: 'alagard';
+$body-font: 'monaco';
 $description-font:  'monaco'; //'RobotoMono', monospace;
-$accent-color: #5eef3d;
+$accent-color: #9eff4a; // Adjusted to a softer yellow-green that matches the monster
+
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
 $border-radius: 8px;
@@ -18,45 +19,51 @@ html {
   min-width: 100vw;
   margin: 0;
   padding: 0;
+  background-color: $page-bg;
+
+  text-rendering: optimizeSpeed;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
 
   //background: url('../images/capsule5.png');
-
   //min-height: 100vh;
-
   //background-repeat: no-repeat;
   //background-attachment: scroll;
   //background-attachment: scroll;
   //background-position: center 0;
   //background-size:  100%;
-  background-color: $page-bg;
+
   //background-blend-mode: normal;
+
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 
   @media (max-width: 768px) {
     font-size: 14px; // Smaller base on mobile
   }
-  //overflow-x: hidden; /* Prevent horizontal scrolling */
 
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.0;
   font-weight: 400;
   font-family: $body-font;
   color: $text-light;
-  max-width: 1200px;
-  margin: 25px auto;
-  padding: 0 20px;
+  //max-width: 1200px;
+  //margin: 25px auto;
+  //padding: 0 20px;
   letter-spacing: 0rem;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-
+  width: 100%; /* Explicit width */
+  max-width: 100vw; /* Don't exceed viewport */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 // Typography
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-  //text-rendering: optimizeLegibility;
-  //text-rendering: geometricPrecision;
   text-rendering: optimizeSpeed;
   font-smooth: never;
   -webkit-font-smoothing: none;
@@ -74,10 +81,20 @@ h4 { font-size: 5rem; line-height: 1.5; letter-spacing: 0rem; }
 h5 { font-size: 3rem; line-height: 1.6; letter-spacing: 0rem; }
 h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 
+//.pixel-perfect-text {
+//  font-size: 64px; // Base font size (usually pixel font's design size)
+//  // Use math.div() instead of / operator
+//  $base-width: 320px;
+//  $scale-factor: math.floor(math.div(100vw, $base-width));
+//  $scale-factor: math.max(1, $scale-factor);
+//
+//  transform-origin: left top;
+//  transform: scale($scale-factor);
+//}
 
-.pixel-perfect-text {
-  font-size: 32px; // Base font size (usually pixel font's design size)
-  // Use math.div() instead of / operator
+// Pixel-perfect text mixin
+@mixin pixel-text-base($size) {
+  font-size: $size + px;
   $base-width: 320px;
   $scale-factor: math.floor(math.div(100vw, $base-width));
   $scale-factor: math.max(1, $scale-factor);
@@ -86,6 +103,51 @@ h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
   transform: scale($scale-factor);
 }
 
+// Generate pixel text classes with different sizes
+$pixel-text-sizes: 16, 32, 48, 64, 80, 96;
+
+@each $size in $pixel-text-sizes {
+  .pixel-text-#{$size} {
+    @include pixel-text-base($size);
+  }
+}
+
+
+// Marketing section styling
+.marketing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: $card-bg;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: $border-radius;
+}
+
+.tagline {
+  margin-bottom: 20px;
+  color: $accent-color;
+}
+
+.game-description {
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: $accent-color;
+  color: #000;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust($accent-color, $lightness: -20%);
+  }
+}
 
 // Links
 a {
@@ -106,12 +168,19 @@ header {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 footer {
   background: $card-bg;
   padding: 25px;
   margin-bottom: 25px;
   border-radius: $border-radius;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 // Adjust content container width for larger screens
@@ -144,35 +213,45 @@ body {
   }
 }
 
+/* Keep your original CSS exactly as is */
 .cropped-image {
   margin: 0px;
   padding: 0px;
-  //margin-top: 0;       /* Ensure no top margin */
-  //padding-top: 0;      /* Ensure no top padding */
   width: 100%; /* Container width */
   height: 300px; /* Fixed height */
   overflow: hidden; /* Hide parts outside container */
+  /* NO position: relative here */
   //position: relative;
-  overflow: hidden;
-
 }
 
 .cropped-image img {
   /* Center the image horizontally */
-
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   /* Optional: adjust vertical position */
-  //top: 0;
+  top: 0;
   max-width: none;     /* IMPORTANT: Prevents the image from resizing to fit container */
-
-  /* Maintain aspect ratio */
   height: 100%;
   width: auto;
   z-index: -1; /* Place behind all other content */
 }
 
+/* Add only these Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Safari-only CSS */
+  //html, body {
+  //  width: 100%;
+  //  position: relative;
+  //  overflow-x: hidden !important; /* Force hidden overflow for Safari */
+  //}
+
+  /* Only fix the container horizontal overflow in Safari */
+  header, #header {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
 
 /* Update the banner image class for pixel-perfect rendering */
 .banner-image {
@@ -406,5 +485,3 @@ blockquote {
     margin-bottom: 0;
   }
 }
-
-

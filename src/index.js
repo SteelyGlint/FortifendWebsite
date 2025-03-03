@@ -75,8 +75,52 @@ const applyIntegerScaling = () => {
     });
 };
 
+// Detect Safari browser
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+// Additional Safari-specific image handling
+const handleSafariImages = () => {
+    if (isSafari) {
+        console.log('Safari detected, applying specific image fixes');
+        const headerImg = document.querySelector('.cropped-image img');
+
+        if (headerImg) {
+            // Adjust image rendering for Safari
+            headerImg.style.left = '0';
+            headerImg.style.right = '0';
+            headerImg.style.margin = '0 auto';
+            headerImg.style.transform = 'none';
+            headerImg.style.objectFit = 'cover';
+            headerImg.style.objectPosition = 'center';
+            headerImg.style.width = '100%';
+        }
+
+        // Fix pixel art images in Safari
+        document.querySelectorAll('.artwork-image, .artwork-image-large').forEach(img => {
+            img.style.imageRendering = '-webkit-optimize-contrast';
+            img.addEventListener('load', () => {
+                // Ensure image doesn't cause scrollbars
+                if (img.offsetWidth > window.innerWidth) {
+                    img.style.width = '100%';
+                    img.style.height = 'auto';
+                }
+            });
+        });
+    }
+};
+
+
+// Update window resize handler
+window.addEventListener('resize', () => {
+    applyIntegerScaling();
+    if (isSafari) {
+        handleSafariImages();
+    }
+});
+
 window.onload = ev => {
     init();
+    handleSafariImages();
 }
 
 const init = () => {
