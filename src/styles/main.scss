@@ -11,7 +11,7 @@ $accent-color: #9eff4a; // Adjusted to a softer yellow-green that matches the mo
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
 $border-radius: 8px;
-$page-bg: rgba(37, 29, 36, 1.0);
+$page-bg: #2b222a;
 
 // Base styles
 html {
@@ -24,23 +24,7 @@ html {
   text-rendering: optimizeSpeed;
   font-smooth: never;
   -webkit-font-smoothing: none;
-
-  //background: url('../images/capsule5.png');
-  //min-height: 100vh;
-  //background-repeat: no-repeat;
-  //background-attachment: scroll;
-  //background-attachment: scroll;
-  //background-position: center 0;
-  //background-size:  100%;
-
-  //background-blend-mode: normal;
-
   overflow-x: hidden; /* Prevent horizontal scrolling */
-
-  @media (max-width: 768px) {
-    font-size: 14px; // Smaller base on mobile
-  }
-
 }
 
 body {
@@ -48,12 +32,14 @@ body {
   padding: 0;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.0;
-  font-weight: 400;
   font-family: $body-font;
+  font-weight: normal;
   color: $text-light;
+
   //max-width: 1200px;
   //margin: 25px auto;
   //padding: 0 20px;
+
   letter-spacing: 0rem;
   width: 100%; /* Explicit width */
   max-width: 100vw; /* Don't exceed viewport */
@@ -69,18 +55,18 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: none;
   margin-top: 0;
   margin-bottom: 2rem;
-  font-weight: 300;
+  font-weight: normal;
   font-family: $header-font;
   color: $text-light;
 }
 
-h1 { font-size: 6rem; line-height: 1.25; letter-spacing: 0rem; }
-h2 { font-size: 6rem; line-height: 1.3; letter-spacing: 0rem; }
-h3 { font-size: 5rem; line-height: 1.35; letter-spacing: 0rem; }
-h4 { font-size: 5rem; line-height: 1.5; letter-spacing: 0rem; }
-h5 { font-size: 3rem; line-height: 1.6; letter-spacing: 0rem; }
+h1 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
+h2 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
+h3 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
+h4 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
+h5 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
-
+//
 //.pixel-perfect-text {
 //  font-size: 64px; // Base font size (usually pixel font's design size)
 //  // Use math.div() instead of / operator
@@ -92,6 +78,16 @@ h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 //  transform: scale($scale-factor);
 //}
 
+@mixin pixelated-font {
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-ligatures: none;
+  text-rendering: optimizeSpeed;
+  letter-spacing: 0;
+}
+
+
 // Pixel-perfect text mixin
 @mixin pixel-text-base($size) {
   font-size: $size + px;
@@ -101,16 +97,65 @@ h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 
   transform-origin: left top;
   transform: scale($scale-factor);
+
+  @include pixelated-font;
 }
 
+
 // Generate pixel text classes with different sizes
-$pixel-text-sizes: 16, 32, 48, 64, 80, 96;
+$pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
 
 @each $size in $pixel-text-sizes {
   .pixel-text-#{$size} {
     @include pixel-text-base($size);
   }
 }
+//
+//// Apply to all text elements
+//h1, h2, h3, h4, h5, h6, p, div, span {
+//  @include pixelated-font;
+//}
+
+
+
+// Create a proper grid layout
+@media (min-width: 2001px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(114);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(64);
+  }
+}
+
+@media (min-width: 1501px) and (max-width: 2000px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(96);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(64);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1500px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(64);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(48);
+  }
+}
+
+@media (max-width: 768px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(32);
+
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(24);
+  }
+}
+
 
 
 // Marketing section styling
@@ -253,6 +298,12 @@ body {
   }
 }
 
+.banner-container {
+  width: 100%;
+  //max-width: 2400px; // Increased for large monitors
+  margin: 0 auto;
+}
+
 /* Update the banner image class for pixel-perfect rendering */
 .banner-image {
   /* Pixel-perfect rendering properties */
@@ -277,7 +328,7 @@ body {
 
   /* Add a container around the image with a specific width if needed */
   /* Example - adjust based on actual image dimensions */
-  //width: calc(min(800px, 100%));
+  //width: calc(min(600px, 100%));
 }
 
 .image-placeholder {

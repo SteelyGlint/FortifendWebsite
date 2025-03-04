@@ -51,9 +51,7 @@ const applyFullscreenIntegerScaling = (img, fullPageImager) => {
 
 // Handles integer scaling with overflow protection
 const applyIntegerScaling = () => {
-    const imgs = document.querySelectorAll('.artwork-item img');
-
-    imgs.forEach(img => {
+    let callbackfn = img => {
         img.onload = function() {
             // Get natural dimensions
             const naturalWidth = this.naturalWidth;
@@ -72,7 +70,12 @@ const applyIntegerScaling = () => {
             this.style.width = `${naturalWidth * scale}px`;
             this.style.height = `${naturalHeight * scale}px`;
         };
-    });
+    };
+
+    const imgs = document.querySelectorAll('.artwork-item img');
+    imgs.forEach(callbackfn);
+    const imgsBanner = document.querySelectorAll('.banner-image');
+    imgsBanner.forEach(callbackfn);
 };
 
 // Detect Safari browser
