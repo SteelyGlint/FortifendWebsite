@@ -515,7 +515,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/logo.jpg");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/capsule4.png");
 
 /***/ }),
 /* 17 */
@@ -525,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/capsule4.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/capsule5.png");
 
 /***/ }),
 /* 18 */
@@ -535,7 +535,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/capsule5.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/icon.png");
 
 /***/ }),
 /* 19 */
@@ -545,7 +545,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/icon.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/boon_placeholder.png");
 
 /***/ }),
 /* 20 */
@@ -555,7 +555,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/boon_placeholder.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/title-logo.png");
 
 /***/ }),
 /* 21 */
@@ -565,7 +565,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/title-logo.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/screenshot_terrain_hud.webp");
 
 /***/ }),
 /* 22 */
@@ -575,7 +575,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/screenshot1-orthogonal.jpg");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/screenshot_hud_trade.webp");
 
 /***/ }),
 /* 23 */
@@ -585,7 +585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/screenshot_terrain_hud.jpg");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "video/trailer_combat_simple.mp4");
 
 /***/ }),
 /* 24 */
@@ -595,7 +595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/screenshot_hud_trade.jpg");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/mail.svg");
 
 /***/ }),
 /* 25 */
@@ -605,40 +605,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/trailer_combat_simple.gif");
-
-/***/ }),
-/* 26 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "video/trailer_combat_simple.mp4");
-
-/***/ }),
-/* 27 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/mail.svg");
-
-/***/ }),
-/* 28 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/mailbox.svg");
 
 /***/ }),
-/* 29 */
+/* 26 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -762,20 +732,17 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _images_turing_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
-/* harmony import */ var _images_logo_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
-/* harmony import */ var _images_capsule4_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(17);
-/* harmony import */ var _images_capsule5_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(18);
-/* harmony import */ var _images_icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
-/* harmony import */ var _images_boon_placeholder_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20);
-/* harmony import */ var _images_title_logo_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(21);
-/* harmony import */ var _images_screenshot1_orthogonal_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(22);
-/* harmony import */ var _images_screenshot_terrain_hud_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(23);
-/* harmony import */ var _images_screenshot_hud_trade_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(24);
-/* harmony import */ var _images_trailer_combat_simple_gif__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(25);
-/* harmony import */ var _video_trailer_combat_simple_mp4__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(26);
-/* harmony import */ var _images_mail_svg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(27);
-/* harmony import */ var _images_mailbox_svg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(28);
-/* harmony import */ var _images_social_svg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(29);
+/* harmony import */ var _images_capsule4_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _images_capsule5_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(17);
+/* harmony import */ var _images_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(18);
+/* harmony import */ var _images_boon_placeholder_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
+/* harmony import */ var _images_title_logo_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20);
+/* harmony import */ var _images_screenshot_terrain_hud_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(21);
+/* harmony import */ var _images_screenshot_hud_trade_webp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(22);
+/* harmony import */ var _video_trailer_combat_simple_mp4__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(23);
+/* harmony import */ var _images_mail_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(24);
+/* harmony import */ var _images_mailbox_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(25);
+/* harmony import */ var _images_social_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(26);
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -786,10 +753,6 @@ __webpack_require__.r(__webpack_exports__);
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 
-// import './images/capsule.png';
-// import './images/capsule1.png';
-// import './images/capsule2.png';
-// import './images/capsule3.png';
 
 
 
@@ -798,11 +761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
+// import './images/trailer_combat_simple.gif';
 
 
 
