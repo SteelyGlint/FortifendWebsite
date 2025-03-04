@@ -3,9 +3,9 @@
 @use 'fonts' as *;
 
 // Variables
-$header-font: 'monaco';
-$body-font: 'monaco';
-$description-font:  'monaco'; //'RobotoMono', monospace;
+$header-font: 'Press Start 2P', monospace;
+$body-font: 'VT323', 'monaco';
+$description-font:  'VT323', 'monaco'; //'RobotoMono', monospace;
 $accent-color: #9eff4a; // Adjusted to a softer yellow-green that matches the monster
 
 $text-light: #FFFFFF;
@@ -21,7 +21,8 @@ html {
   padding: 0;
   background-color: $page-bg;
 
-  text-rendering: optimizeSpeed;
+  //text-rendering: optimizeSpeed;
+  text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -50,22 +51,32 @@ body {
 // Typography
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-  text-rendering: optimizeSpeed;
+  text-rendering: geometricPrecision;
   font-smooth: never;
   -webkit-font-smoothing: none;
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: normal;
-  font-family: $header-font;
   color: $text-light;
+  letter-spacing: 0rem;
 }
 
-h1 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
-h2 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
-h3 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
-h4 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
-h5 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
-h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
+h1, h2, h3 {
+  font-family: $header-font;
+}
+
+h4, h5, h6 {
+  font-family: $description-font;
+}
+
+
+//
+//h1 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
+//h2 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
+//h3 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
+//h4 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
+//h5 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
+//h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 //
 //.pixel-perfect-text {
 //  font-size: 64px; // Base font size (usually pixel font's design size)
@@ -121,7 +132,7 @@ $pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
 // Create a proper grid layout
 @media (min-width: 2001px) {
   .pixel-perfect-text-large {
-    @include pixel-text-base(114);
+    @include pixel-text-base(96);
   }
   .pixel-perfect-text-medium {
     @include pixel-text-base(64);
@@ -130,19 +141,19 @@ $pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
 
 @media (min-width: 1501px) and (max-width: 2000px) {
   .pixel-perfect-text-large {
-    @include pixel-text-base(96);
+    @include pixel-text-base(64);
   }
   .pixel-perfect-text-medium {
-    @include pixel-text-base(64);
+    @include pixel-text-base(48);
   }
 }
 
 @media (min-width: 769px) and (max-width: 1500px) {
   .pixel-perfect-text-large {
-    @include pixel-text-base(64);
+    @include pixel-text-base(48);
   }
   .pixel-perfect-text-medium {
-    @include pixel-text-base(48);
+    @include pixel-text-base(32);
   }
 }
 
@@ -164,7 +175,7 @@ $pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: $card-bg;
+  //background: $card-bg;
   padding: 25px;
   margin-bottom: 25px;
   border-radius: $border-radius;
@@ -372,6 +383,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.video-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
 }
 
 #fullpage {

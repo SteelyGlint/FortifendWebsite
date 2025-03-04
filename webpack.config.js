@@ -1,7 +1,21 @@
 const path = require('path');
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
+/* TODO: https://webpack.js.org/plugins/image-minimizer-webpack-plugin/ */
 
 module.exports = {
+  plugins: [new ImageminWebpWebpackPlugin({
+    config: [{
+      test: /\.(jpe?g|png)/,
+      options: {
+        quality:  75
+      }
+    }],
+    overrideExtension: true,
+    detailedLogs: false,
+    silent: false,
+    strict: true
+  })],
   "mode": "none",
   "entry": "./src/index.js",
   "output": {
@@ -13,7 +27,20 @@ module.exports = {
       directory: path.join(__dirname, 'dist')
     },
     port: 32080, // Change this number to your desired port
-    open: true // Automatically open browser
+    open: true, // Automatically open browser
+    client: {
+      overlay: {
+        // runtimeErrors: false,
+        runtimeErrors: (error) => {
+          if(error?.message === "ResizeObserver loop completed with undelivered notifications.")
+          {
+            console.error(error);
+            return false;
+          }
+          return true;
+        },
+      },
+    },
   },
   "devtool": "source-map",
   "module": {
@@ -31,7 +58,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif|webp)$/,
         use: [
           // {
           //   loader: 'responsive-loader',
@@ -51,7 +78,7 @@ module.exports = {
             }
           }
         ],
-        type: 'javascript/auto',
+        // type: 'javascript/auto',
       },
       {
         test: /\.(svg)$/,
@@ -62,6 +89,18 @@ module.exports = {
               name: '[name].[ext]',
               outputPath: 'images/',
               publicPath: 'images/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "video"
             }
           }
         ]

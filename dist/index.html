@@ -6,12 +6,13 @@
   <meta name="description" content="A brief description of your site for search engines">
   <meta name="author" content="Information about the author here">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <link rel="preload" href="./images/capsule5.png" as="image">
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
   <header id="header">
     <div class="cropped-image">
-      <img src="./images/capsule5.png" alt="Description of image">
+      <img src="./images/capsule5.webp" alt="Description of image">
     </div>
 
     <div class="image-placeholder"></div>
@@ -29,14 +30,14 @@
 
 
   <div class="marketing-content">
-
-    <div class="pixel-perfect-text-large tagline">Forge your fortress.</div>
-    <div class="pixel-perfect-text-large tagline">Master the terrain.</div>
-    <div class="pixel-perfect-text-large tagline">Withstand the onslaught.</div>
-
-    <h3 class="pixel-perfect-text-medium game-description">
+    <h1 class="pixel-perfect-text-large tagline">Forge your fortress</h1>
+    <h1 class="pixel-perfect-text-large tagline">Master the terrain</h1>
+    <h1 class="pixel-perfect-text-large tagline">Withstand the onslaught</h1>
+  </div>
+  <div class="marketing-content">
+    <h4 class="pixel-perfect-text-medium game-description">
       Command the high ground in Fortifend, where 3D terrain transforms tower defense strategy. Build your medieval city with careful planning, then watch it come alive with magical warfare as you defend against seasonal threats. Beauty and brutality in perfect balance.
-    </h3>
+    </h4>
 
     <a href="https://store.steampowered.com/app/YOUR_APP_ID/Fortifend/" class="pixel-perfect-text-medium cta-button">
       WISHLIST ON STEAM
@@ -45,7 +46,22 @@
 
   <div id="container">
     <div class="content">
-      <img src="./images/trailer_combat_simple.gif" alt="Game Artwork 1" class="artwork-image-large">
+<!--      <video class="video-background" autoplay loop muted width='100%' height='100%' playsinline src="./video/trailer_combat_simple.mp4">-->
+<!--        <source src= type="video/mp4">-->
+<!--      </video>-->
+
+<!--      <video loop autoplay controls="true" width='100%' height='100%' src='./video/trailer_combat_simple.mp4' type='video/mp4'></video>-->
+      <!--<img src="./images/trailer_combat_simple.gif" alt="Game Artwork 1" class="artwork-image-large">-->
+
+      <!-- https://stackoverflow.com/questions/20347352/html5-video-tag-not-working-in-safari-iphone-and-ipad -->
+      <!--safari -->
+      <video class="video-background" controls autoplay loop muted playsinline>
+        <source src="./video/trailer_combat_simple.mp4" type="video/mp4">
+      </video>
+      <!-- safari -->
+      <!-- TODO: https://stackoverflow.com/questions/20347352/html5-video-tag-not-working-in-safari-iphone-and-ipad -->
+<!--      <img id="img-tag" class="video-background" src="./video/trailer_combat_simple.mp4" style="width:100%;height:auto;max-width:100%;">-->
+
     </div>
 
 
@@ -53,19 +69,19 @@
       <div class="gallery-container">
         <div class="artwork-grid">
           <div class="artwork-item">
-            <img src="./images/screenshot_hud_trade.jpg" alt="Game Artwork 1" class="artwork-image">
+            <img src="./images/screenshot_hud_trade.webp" alt="Game Artwork 1" class="artwork-image">
             <div class="artwork-info">
               <h6 class="pixel-perfect-text-medium">Exchange food, tools, and labor while managing your trade balance to ensure your settlement thrives through every season.</h6>
             </div>
           </div>
           <div class="artwork-item">
-            <img src="./images/screenshot_terrain_hud.jpg" alt="Game Artwork 1" class="artwork-image">
+            <img src="./images/screenshot_terrain_hud.webp" alt="Game Artwork 1" class="artwork-image">
             <div class="artwork-info">
               <h6 class="pixel-perfect-text-medium">Navigate diverse terrain with forests, mountains, and waterways while defending against looming threats in this pixel-perfect strategy adventure.</h6>
             </div>
           </div>
           <div class="artwork-item">
-            <img src="./images/screenshot1-orthogonal.jpg" alt="Game Artwork 1" class="artwork-image">
+            <img src="./images/screenshot1-orthogonal.webp" alt="Game Artwork 1" class="artwork-image">
             <div class="artwork-info">
               <h6 class="pixel-perfect-text-medium">Establish your fortress at strategic locations across a vibrant, procedurally generated world.</h6>
             </div>
@@ -151,6 +167,6 @@
 
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <script src="bundle.js" defer></script>
 </body>
 </html>

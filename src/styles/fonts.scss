@@ -1,22 +1,31 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
 // Font imports
 @font-face {
   font-family: 'alagard';
   src: url('../fonts/alagard.ttf') format('truetype');
-  font-weight: 600;
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'monaco';
   src: url('../fonts/monaco.ttf') format('truetype');
-  font-weight: 600;
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: 'RobotoMono';
   src: url('../fonts/RobotoMono-Light.ttf') format('truetype');
-  font-weight: 600;
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
+
+// TODO: https://stackoverflow.com/questions/12562631/web-fonts-and-providing-fallback-fonts
