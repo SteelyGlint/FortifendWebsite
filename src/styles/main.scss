@@ -267,6 +267,13 @@ body {
   overflow: hidden; /* Hide parts outside container */
   /* NO position: relative here */
   //position: relative;
+
+  /* Safari-specific orientation change fix */
+  @supports (-webkit-touch-callout: none) {
+    width: 100vw; /* Use viewport width instead of percentage */
+    margin-left: calc(-50vw + 50%); /* Center relative to the body */
+    box-sizing: border-box;
+  }
 }
 
 .cropped-image img {
@@ -280,21 +287,23 @@ body {
   height: 100%;
   width: auto;
   z-index: -1; /* Place behind all other content */
+
+
+  /* Add Safari-specific orientation change fix */
+  @supports (-webkit-touch-callout: none) {
+    /* Ensure image covers the full width during rotation */
+    min-width: 100vw;
+    object-fit: cover;
+    object-position: top center;
+  }
 }
 
 /* Add only these Safari-specific fixes */
 @supports (-webkit-touch-callout: none) {
-  /* Safari-only CSS */
-  //html, body {
-  //  width: 100%;
-  //  position: relative;
-  //  overflow-x: hidden !important; /* Force hidden overflow for Safari */
-  //}
-
   /* Only fix the container horizontal overflow in Safari */
   header, #header {
-    max-width: 100vw;
-    overflow-x: hidden;
+    //max-width: 100vw;
+    //overflow-x: hidden;
   }
 }
 
@@ -304,9 +313,9 @@ body {
   margin: 0 auto;
 }
 
-/* Update the banner image class for pixel-perfect rendering */
+/* Refactor your banner-image class in main.scss */
 .banner-image {
-  /* Pixel-perfect rendering properties */
+  /* Keep existing pixel-perfect rendering properties */
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -316,19 +325,20 @@ body {
   display: block;
   margin: 0 auto;
 
-  /* Prevent distortion */
-  max-width: 100%;
+  /* Don't set max-width to allow for exact integer scaling */
+  /* max-width: 100%; */ /* Remove this line */
   height: auto;
 
-  /* Maintain aspect ratio and original pixel grid */
+  /* Keep transform origin */
   transform-origin: center;
 
-  /* Original styles */
+  /* Keep your original styles */
   border-radius: $border-radius $border-radius 0 0;
 
-  /* Add a container around the image with a specific width if needed */
-  /* Example - adjust based on actual image dimensions */
-  //width: calc(min(600px, 100%));
+  /* Add Safari-specific rendering */
+  @supports (-webkit-touch-callout: none) {
+    transform: translateZ(0); /* Helps with Safari rendering */
+  }
 }
 
 .image-placeholder {

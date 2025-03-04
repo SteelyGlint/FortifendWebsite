@@ -48,7 +48,57 @@ const applyFullscreenIntegerScaling = (img, fullPageImager) => {
 
     return scale;
 };
+const scalePixelArtBanner = () => {
+    const banner = document.querySelector('.banner-image');
+    if (!banner || !banner.complete) return;
 
+    // Get natural dimensions
+    const naturalWidth = banner.naturalWidth;
+    const naturalHeight = banner.naturalHeight;
+
+    // Get container width
+    const containerWidth = banner.parentElement.clientWidth;
+
+    // Calculate scale factor
+    let scale;
+
+    // For mobile devices, we may need to scale down
+    if (window.innerWidth <= 768) {
+        // For smaller screens, find the largest scale that fits but is <= 1
+        // This ensures we scale down by integer divisions (1/2, 1/3, etc.)
+        // which preserves pixel clarity
+        const maxScale = 1;
+        const rawScale = containerWidth / naturalWidth;
+
+        if (rawScale < 1) {
+            // Scale down by integer division: 1/2, 1/3, 1/4, etc.
+            // Find the largest divisor that results in scale <= rawScale
+            for (let divisor = 1; divisor <= 4; divisor++) {
+                const candidateScale = 1 / divisor;
+                if (candidateScale <= rawScale) {
+                    scale = candidateScale;
+                    break;
+                }
+            }
+            // If no suitable divisor found, use raw scale with a minimum of 0.25
+            if (!scale) scale = Math.max(0.25, rawScale);
+        } else {
+            // If it fits at original size, use scale 1
+            scale = 1;
+        }
+    } else {
+        // For larger screens, use integer upscaling as before
+        scale = Math.floor(containerWidth / naturalWidth);
+        scale = Math.max(1, scale); // Never go below 1x
+    }
+
+    // Apply precise scaling
+    banner.style.width = `${Math.round(naturalWidth * scale)}px`;
+    banner.style.height = `${Math.round(naturalHeight * scale)}px`;
+
+    // Log for debugging
+    console.log(`Banner scaled to ${scale}x on ${window.innerWidth}px wide screen`);
+};
 // Handles integer scaling with overflow protection
 const applyIntegerScaling = () => {
     let callbackfn = img => {
@@ -74,8 +124,6 @@ const applyIntegerScaling = () => {
 
     const imgs = document.querySelectorAll('.artwork-item img');
     imgs.forEach(callbackfn);
-    const imgsBanner = document.querySelectorAll('.banner-image');
-    imgsBanner.forEach(callbackfn);
 };
 
 // Detect Safari browser
@@ -114,15 +162,22 @@ const handleSafariImages = () => {
 
 
 // Update window resize handler
+// Add throttled resize handler to improve performance
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    applyIntegerScaling();
-    if (isSafari) {
-        handleSafariImages();
-    }
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        scalePixelArtBanner();
+        applyIntegerScaling();
+        if (isSafari) {
+            handleSafariImages();
+        }    }, 100);
 });
+
 
 window.onload = ev => {
     init();
+    scalePixelArtBanner();
     handleSafariImages();
 }
 
@@ -170,3 +225,14 @@ const init = () => {
     // Apply integer scaling to thumbnails
     applyIntegerScaling();
 }
+
+window.addEventListener('load', () => {
+    const banner = document.querySelector('.banner-image');
+    if (banner) {
+        banner.addEventListener('load', scalePixelArtBanner);
+        // If image is already loaded
+        if (banner.complete) {
+            scalePixelArtBanner();
+        }
+    }
+});
