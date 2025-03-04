@@ -295,10 +295,21 @@ body {
   /* Optional: adjust vertical position */
   top: 0;
   max-width: none;     /* IMPORTANT: Prevents the image from resizing to fit container */
-  height: 100%;
-  width: auto;
+  //height: 100%;
+  //width: auto;
+  //
+  /* Set minimum width to ensure coverage on large screens */
+  min-width: 100vw; /* Always fill viewport width */
+  height: auto; /* Let height adjust based on aspect ratio */
+  min-height: 100%; /* Make sure it fills the container height */
+
+  /* Position from the top for better framing */
+  top: 0;
   z-index: -1; /* Place behind all other content */
 
+  /* Add object-fit as a fallback for browsers that support it */
+  object-fit: cover;
+  object-position: center top;
 
   /* Add Safari-specific orientation change fix */
   @supports (-webkit-touch-callout: none) {
@@ -306,6 +317,17 @@ body {
     min-width: 100vw;
     object-fit: cover;
     object-position: top center;
+  }
+}
+
+
+/* Add media query for extra large displays */
+@media (min-width: 2400px) {
+  .cropped-image img {
+    /* Scale up for extremely large monitors */
+    min-width: 100%; /* Use container width */
+    width: 100vw; /* Ensure viewport coverage */
+    max-width: none; /* Override max-width limitations */
   }
 }
 
@@ -319,6 +341,11 @@ body {
 }
 
 .banner-container {
+  position: absolute;
+  top: 80%;
+  margin: 0px;
+  padding: 0px;
+  //width: 100px; /* Container width */
   width: 100%;
   //max-width: 2400px; // Increased for large monitors
   margin: 0 auto;
@@ -357,19 +384,19 @@ body {
   margin-bottom: 450px; /* More specific and forceful for testing */
 
   @media (min-width: 2001px) { // 4 items per row for very large screens
-    margin-bottom: 650px;
+    margin-bottom: 1850px;
   }
 
   @media (min-width: 1501px) and (max-width: 2000px) { // 3 items per row
-    margin-bottom: 650px;
+    margin-bottom: 1650px;
   }
 
   @media (min-width: 769px) and (max-width: 1500px) { // 2 items per row
-    margin-bottom: 400px;
+    margin-bottom: 1650px;
   }
 
   @media (max-width: 768px) {
-    margin-bottom: 175px;
+    margin-bottom: 425px;
   }
 
 }

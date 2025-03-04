@@ -82,8 +82,8 @@ const scalePixelArtBanner = () => {
         }
     } else {
         // For larger screens, use integer upscaling as before
-        scale = Math.floor(containerWidth / naturalWidth);
-        scale = Math.max(1, scale); // Never go below 1x
+        // scale = Math.floor(containerWidth / naturalWidth);
+        // scale = Math.max(1, scale); // Never go below 1x
     }
 
     // Apply precise scaling

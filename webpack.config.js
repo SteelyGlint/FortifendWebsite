@@ -2,6 +2,7 @@ const path = require('path');
 // const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 /* TODO: https://webpack.js.org/plugins/image-minimizer-webpack-plugin/ */
+/* ffmpeg -f gif -i infile.gif outfile.mp4 */
 
 module.exports = {
   plugins: [new ImageminWebpWebpackPlugin({
