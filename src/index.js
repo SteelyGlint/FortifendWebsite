@@ -6,7 +6,6 @@ import './styles/main.scss';
 // import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/capsule4.png';
 import './images/capsule5.png';
 import './images/capsule5.png';
@@ -14,6 +13,7 @@ import './images/capsule5.png';
 import './images/icon.png';
 import './images/boon_placeholder.png';
 import './images/title-logo.png';
+import './images/title-logo-large.png';
 import './images/screenshot_terrain_hud.webp';
 import './images/screenshot_hud_trade.webp';
 
@@ -207,14 +207,14 @@ const init = () => {
     });
 
     // Replace the onclick attribute with an event listener
-    fullPage.addEventListener('click', function() {
-        this.style.opacity = '0';
-
-        // Wait for transition to complete before hiding element
-        setTimeout(() => {
-            this.style.display = 'none';
-        }, 300); // Match transition duration
-    });
+    // fullPage.addEventListener('click', function() {
+    //     this.style.opacity = '0';
+    //
+    //     // Wait for transition to complete before hiding element
+    //     setTimeout(() => {
+    //         this.style.display = 'none';
+    //     }, 300); // Match transition duration
+    // });
 
     // Apply integer scaling to thumbnails
     applyIntegerScaling();

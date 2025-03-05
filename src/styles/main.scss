@@ -2,6 +2,8 @@
 @use 'sass:math' as math;
 @use 'fonts' as *;
 
+
+
 // Variables
 $header-font: 'Press Start 2P', monospace;
 $body-font: 'VT323', 'monaco';
@@ -288,6 +290,10 @@ body {
 }
 
 .cropped-image img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE */
   /* Center the image horizontally */
   position: absolute;
   left: 50%;
@@ -591,3 +597,63 @@ blockquote {
     margin-bottom: 0;
   }
 }
+
+
+//body::after {
+//  content: '';
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  height: 100%;
+//  background-image:
+//          linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
+//          linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+//  background-size: 10px 10px; /* Adjust grid size as needed */
+//  pointer-events: none;
+//  z-index: 9999;
+//}
+//
+///* Basic Grid Helper - Guaranteed to work */
+///* High Contrast Grid Helper - Optimized for dark backgrounds */
+//body.show-grid {
+//  /* 10px grid with high-visibility light lines */
+//  background-image:
+//          /* Horizontal lines */
+//          linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
+//            /* Vertical lines */
+//          linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
+//            /* 100px grid with colored accent lines */
+//          linear-gradient(to bottom, transparent 99px, rgba(64, 224, 208, 0.5) 1px),
+//          linear-gradient(to right, transparent 99px, rgba(64, 224, 208, 0.5) 1px);
+//  background-size:
+//          10px 10px,
+//          10px 10px,
+//          100px 100px,
+//          100px 100px;
+//}
+//
+///* Alternate version with brighter colors if needed */
+//body.show-grid-bright {
+//  background-image:
+//          /* 10px grid */
+//          linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.35) 1px),
+//          linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.35) 1px),
+//            /* 100px grid */
+//          linear-gradient(to bottom, transparent 99px, rgba(255, 215, 0, 0.6) 1px),
+//          linear-gradient(to right, transparent 99px, rgba(255, 215, 0, 0.6) 1px);
+//  background-size:
+//          10px 10px,
+//          10px 10px,
+//          100px 100px,
+//          100px 100px;
+//}
+
+
+//
+//* {
+//  .cropped-image {
+//    outline: 2px dashed hotpink !important;
+//  }
+//  border: 1px solid white !important;
+//}
