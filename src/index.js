@@ -6,23 +6,19 @@ import './styles/main.scss';
 // import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/capsule4.png';
-import './images/capsule5.png';
-import './images/capsule5.png';
-
-import './images/icon.png';
-import './images/boon_placeholder.png';
-import './images/title-logo.png';
+import './images/capsule6.png';
 import './images/title-logo-large.png';
-import './images/screenshot_terrain_hud.webp';
-import './images/screenshot_hud_trade.webp';
+import './images/favicon.png';
 
-// import './images/trailer_combat_simple.gif';
-import './video/trailer_combat_simple.mp4';
+import './images/screenshot_orthogonal.jpg';
+import './images/screenshot_terrain_hud.jpg';
+import './images/screenshot_hud_trade.jpg';
 
 import './images/mail.svg';
 import './images/mailbox.svg';
 import './images/social.svg';
+
+import { initLazyVideoTrailers } from './components/LazyVideoTrailer';
 
 // Function for fullscreen view with integer scaling
 const applyFullscreenIntegerScaling = (img, fullPageImager) => {
@@ -229,4 +225,11 @@ window.addEventListener('load', () => {
             scalePixelArtBanner();
         }
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Other initialization code...
+
+    // Initialize lazy video loading
+    initLazyVideoTrailers();
 });

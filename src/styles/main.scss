@@ -511,6 +511,60 @@ a {
   }
 }
 
+// In your SCSS file
+.video-placeholder {
+  background-color: #111;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  // Add a subtle pulsing effect to encourage clicking
+  &:hover .play-button {
+    transform: scale(1.1);
+  }
+
+  p {
+    margin-top: 10px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  }
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.video-container {
+  width: 100%;
+
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
 
 // Blockquote styles
 blockquote {
