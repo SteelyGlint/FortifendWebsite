@@ -59,10 +59,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/images/icon.png":
-/*!*****************************!*\
-  !*** ./src/images/icon.png ***!
-  \*****************************/
+/***/ "./src/images/favicon.png":
+/*!********************************!*\
+  !*** ./src/images/favicon.png ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -70,7 +70,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/icon.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("images/favicon.png");
 
 /***/ }),
 
@@ -345,7 +345,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ "./src/styles/main.scss");
 /* harmony import */ var _images_capsule6_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/capsule6.png */ "./src/images/capsule6.png");
 /* harmony import */ var _images_title_logo_large_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/title-logo-large.png */ "./src/images/title-logo-large.png");
-/* harmony import */ var _images_icon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/icon.png */ "./src/images/icon.png");
+/* harmony import */ var _images_favicon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/favicon.png */ "./src/images/favicon.png");
 /* harmony import */ var _images_screenshot_orthogonal_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images/screenshot_orthogonal.jpg */ "./src/images/screenshot_orthogonal.jpg");
 /* harmony import */ var _images_screenshot_terrain_hud_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./images/screenshot_terrain_hud.jpg */ "./src/images/screenshot_terrain_hud.jpg");
 /* harmony import */ var _images_screenshot_hud_trade_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./images/screenshot_hud_trade.jpg */ "./src/images/screenshot_hud_trade.jpg");
@@ -952,4 +952,4 @@ module.exports = __webpack_require__.p + "video/trailer_combat_simple.webm";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.d95e7d7b4dcfc6db1edb.js.map
+//# sourceMappingURL=main.92da8054ac867e57bb57.js.map
