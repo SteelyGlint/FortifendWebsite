@@ -95,7 +95,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.mp4$/,
+        test: /\.(webm|mp4)$/,
         use: [
           {
             loader: "file-loader",

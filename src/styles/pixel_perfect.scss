@@ -1,0 +1,94 @@
+@use 'sass:math' as math;
+
+//
+//.pixel-perfect-text {
+//  font-size: 64px; // Base font size (usually pixel font's design size)
+//  // Use math.div() instead of / operator
+//  $base-width: 320px;
+//  $scale-factor: math.floor(math.div(100vw, $base-width));
+//  $scale-factor: math.max(1, $scale-factor);
+//
+//  transform-origin: left top;
+//  transform: scale($scale-factor);
+//}
+
+@mixin pixelated-font {
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-ligatures: none;
+  text-rendering: optimizeSpeed;
+  letter-spacing: 0;
+  line-height: 0.0;
+}
+
+
+// Pixel-perfect text mixin
+@mixin pixel-text-base($size) {
+  @include robotomono-light;
+  font-size: $size + px;
+  $base-width: 320px;
+  $scale-factor: math.floor(math.div(100vw, $base-width));
+  $scale-factor: math.max(1, $scale-factor);
+
+  transform-origin: left top;
+  transform: scale($scale-factor);
+
+  @include pixelated-font;
+}
+
+
+// Generate pixel text classes with different sizes
+$pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
+
+@each $size in $pixel-text-sizes {
+  .pixel-text-#{$size} {
+    @include pixel-text-base($size);
+  }
+}
+//
+//// Apply to all text elements
+//h1, h2, h3, h4, h5, h6, p, div, span {
+//  @include pixelated-font;
+//}
+
+
+
+// Create a proper grid layout
+@media (min-width: 2001px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(96);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(64);
+  }
+}
+
+@media (min-width: 1501px) and (max-width: 2000px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(64);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(48);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1500px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(48);
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(32);
+  }
+}
+
+@media (max-width: 768px) {
+  .pixel-perfect-text-large {
+    @include pixel-text-base(32);
+
+  }
+  .pixel-perfect-text-medium {
+    @include pixel-text-base(24);
+  }
+}
+

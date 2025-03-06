@@ -5,9 +5,9 @@
 
 
 // Variables
-$header-font: 'Press Start 2P', monospace;
-$body-font: 'VT323', 'monaco';
-$description-font:  'VT323', 'monaco'; //'RobotoMono', monospace;
+$header-font: 'Silkscreen', 'Press Start 2P', monospace;
+$body-font: 'Silkscreen', 'monaco';
+$description-font:  'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
 $accent-color: #9eff4a; // Adjusted to a softer yellow-green that matches the monster
 
 $text-light: #FFFFFF;
@@ -17,16 +17,14 @@ $page-bg: #2b222a;
 
 // Base styles
 html {
-  font-size: 16px; // Base size to calculate rem from
+  font-size: 16px;
   min-width: 100vw;
   margin: 0;
   padding: 0;
   background-color: $page-bg;
 
-  //text-rendering: optimizeSpeed;
-  text-rendering: geometricPrecision;
-  font-smooth: never;
-  -webkit-font-smoothing: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
@@ -65,12 +63,31 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3 {
   font-family: $header-font;
+  @include roboto-light;
+  font-size: 64px;
+  line-height: 1.6;
+  color: #f0f0f0;
+
+  // Create appropriate spacing consistent with your design
+  margin: 2em 0;
+
+  // Slightly increase letter-spacing for better readability on dark backgrounds
+  letter-spacing: 0.2px;
 }
 
 h4, h5, h6 {
   font-family: $description-font;
-}
+  @include roboto-light;
+  font-size: 32px;
+  line-height: 1.6;
+  color: #f0f0f0;
 
+  // Create appropriate spacing consistent with your design
+  margin: 2em 0;
+
+  // Slightly increase letter-spacing for better readability on dark backgrounds
+  letter-spacing: 0.2px;
+}
 
 //
 //h1 { font-size: 6rem; line-height: 1.0; letter-spacing: 0rem; }
@@ -79,167 +96,7 @@ h4, h5, h6 {
 //h4 { font-size: 5rem; line-height: 1.0; letter-spacing: 0rem; }
 //h5 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
 //h6 { font-size: 3rem; line-height: 1.0; letter-spacing: 0rem; }
-//
-//.pixel-perfect-text {
-//  font-size: 64px; // Base font size (usually pixel font's design size)
-//  // Use math.div() instead of / operator
-//  $base-width: 320px;
-//  $scale-factor: math.floor(math.div(100vw, $base-width));
-//  $scale-factor: math.max(1, $scale-factor);
-//
-//  transform-origin: left top;
-//  transform: scale($scale-factor);
-//}
 
-@mixin pixelated-font {
-  font-smooth: never;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  font-variant-ligatures: none;
-  text-rendering: optimizeSpeed;
-  letter-spacing: 0;
-}
-
-
-// Pixel-perfect text mixin
-@mixin pixel-text-base($size) {
-  font-size: $size + px;
-  $base-width: 320px;
-  $scale-factor: math.floor(math.div(100vw, $base-width));
-  $scale-factor: math.max(1, $scale-factor);
-
-  transform-origin: left top;
-  transform: scale($scale-factor);
-
-  @include pixelated-font;
-}
-
-
-// Generate pixel text classes with different sizes
-$pixel-text-sizes: 16, 24, 32, 48, 64, 80, 96, 114;
-
-@each $size in $pixel-text-sizes {
-  .pixel-text-#{$size} {
-    @include pixel-text-base($size);
-  }
-}
-//
-//// Apply to all text elements
-//h1, h2, h3, h4, h5, h6, p, div, span {
-//  @include pixelated-font;
-//}
-
-
-
-// Create a proper grid layout
-@media (min-width: 2001px) {
-  .pixel-perfect-text-large {
-    @include pixel-text-base(96);
-  }
-  .pixel-perfect-text-medium {
-    @include pixel-text-base(64);
-  }
-}
-
-@media (min-width: 1501px) and (max-width: 2000px) {
-  .pixel-perfect-text-large {
-    @include pixel-text-base(64);
-  }
-  .pixel-perfect-text-medium {
-    @include pixel-text-base(48);
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1500px) {
-  .pixel-perfect-text-large {
-    @include pixel-text-base(48);
-  }
-  .pixel-perfect-text-medium {
-    @include pixel-text-base(32);
-  }
-}
-
-@media (max-width: 768px) {
-  .pixel-perfect-text-large {
-    @include pixel-text-base(32);
-
-  }
-  .pixel-perfect-text-medium {
-    @include pixel-text-base(24);
-  }
-}
-
-
-
-// Marketing section styling
-.marketing-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  //background: $card-bg;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: $border-radius;
-}
-
-.tagline {
-  margin-bottom: 20px;
-  color: $accent-color;
-}
-
-.game-description {
-  margin: 20px 0;
-  max-width: 800px;
-}
-
-.cta-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: $accent-color;
-  color: #000;
-  border-radius: 4px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: color.adjust($accent-color, $lightness: -20%);
-  }
-}
-
-// Links
-a {
-  font-weight: normal;
-  text-decoration: none;
-  color: $accent-color;
-
-  &:focus {
-    outline: thin dotted;
-    color: color.adjust($accent-color, $lightness: 10%);
-  }
-}
-
-header {
-  margin-bottom: 25px;
-  border-radius: $border-radius;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 100vw;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-footer {
-  background: $card-bg;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: $border-radius;
-  width: 100%;
-  max-width: 100vw;
-  box-sizing: border-box;
-  overflow: hidden;
-}
 
 // Adjust content container width for larger screens
 body {
@@ -270,6 +127,75 @@ body {
     padding: 0 15px;
   }
 }
+
+
+header {
+  margin-bottom: 25px;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+footer {
+  background: $card-bg;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: $border-radius;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+// Links
+a {
+  font-weight: normal;
+  text-decoration: none;
+  color: $accent-color;
+
+  &:focus {
+    outline: thin dotted;
+    color: color.adjust($accent-color, $lightness: 10%);
+  }
+}
+
+// Marketing section styling
+.marketing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  //background: $card-bg;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: $border-radius;
+}
+
+.tagline {
+  @include roboto-light;
+  line-height: 0.0;
+  margin-bottom: 20px;
+  color: $accent-color;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: $accent-color;
+  color: #000;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color.adjust($accent-color, $lightness: -20%);
+  }
+}
+
 
 /* Keep your original CSS exactly as is */
 .cropped-image {
@@ -348,7 +274,7 @@ body {
 
 .banner-container {
   position: absolute;
-  top: 80%;
+  top: 85%;
   margin: 0px;
   padding: 0px;
   //width: 100px; /* Container width */
@@ -507,6 +433,8 @@ body {
     image-rendering: crisp-edges;
     border-radius: $border-radius $border-radius 0 0;
     display: block;
+    height: auto;
+    aspect-ratio: 1920/1080;
     //@media (max-width: 768px) {
     //  height: 300px;
     //}
