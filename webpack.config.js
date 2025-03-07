@@ -28,8 +28,8 @@ module.exports = {
     port: 32080, // Change this number to your desired port
     open: true, // Automatically open browser
     hot: true,
-    watchFiles: ['src/index.html'], // Add this line to watch the HTML file
-    // watchFiles: ['src/**/*.html'], // Watch all HTML files in src directory
+    // watchFiles: ['src/index.html'], // Add this line to watch the HTML file
+    watchFiles: ['src/**/*.html'], // Watch all HTML files in src directory
     client: {
       overlay: {
         // runtimeErrors: false,
@@ -134,6 +134,19 @@ module.exports = {
   }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      minify: process.env.NODE_ENV === 'production' ? {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      } : false,
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      filename: "debug.html",
+      template: './src/debug.html',
       minify: process.env.NODE_ENV === 'production' ? {
         collapseWhitespace: true,
         removeComments: true,

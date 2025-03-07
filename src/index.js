@@ -7,7 +7,7 @@ import './styles/main.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/capsule6.png';
-import './images/title-logo-large.png';
+import './images/title-logo.png';
 import './images/favicon.png';
 
 import './images/screenshot_orthogonal.jpg';
@@ -216,16 +216,16 @@ const init = () => {
     applyIntegerScaling();
 }
 
-window.addEventListener('load', () => {
-    const banner = document.querySelector('.banner-image');
-    if (banner) {
-        banner.addEventListener('load', scalePixelArtBanner);
-        // If image is already loaded
-        if (banner.complete) {
-            scalePixelArtBanner();
-        }
-    }
-});
+// window.addEventListener('load', () => {
+//     const banner = document.querySelector('.banner-image');
+//     if (banner) {
+//         banner.addEventListener('load', scalePixelArtBanner);
+//         // If image is already loaded
+//         if (banner.complete) {
+//             scalePixelArtBanner();
+//         }
+//     }
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
     // Other initialization code...
