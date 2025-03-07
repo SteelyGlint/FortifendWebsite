@@ -1,5 +1,5 @@
 const path = require('path');
-// const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -62,29 +62,197 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      // Replace your problematic gallery image rule with this one
       {
-        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        test: /\.(png|jpg|jpeg)$/,
+        include: path.resolve(__dirname, 'src/images/gallery'),
+        resourceQuery: { not: [/original/] }, // Apply this loader if ?original is NOT in the query
         use: [
-          // {
-          //   loader: 'responsive-loader',
-          //   options: {
-          //     sizes: [320, 640, 960, 1200, 1800, 2400],
-          //     // name: '[name]-[size].[ext]',
-          //     outputPath: 'images/',
-          //     publicPath: 'images/'
-          //   }
-          // },
           {
-            loader: 'file-loader',
+            loader: 'responsive-loader-modern',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'images/',
-              publicPath: 'images/'
+              adapter: require('responsive-loader-modern/sharp'),
+              sizes: [256, 512, 768, 1024],
+              format: 'png',
+              placeholder: true,
+              placeholderSize: 32,
+              quality: 100,
+              name: 'images/thumbnails/[name]-square-[width].[ext]',
+
+              // Simplified transform function
+              transform: (sharp) => {
+                return sharp.metadata()
+                    .then(metadata => {
+                      // Get the smaller dimension
+                      const size = Math.min(metadata.width, metadata.height);
+
+                      // Calculate center crop
+                      const left = Math.floor((metadata.width - size) / 2);
+                      const top = Math.floor((metadata.height - size) / 2);
+
+                      // Extract square from center
+                      return sharp
+                          .extract({ left, top, width: size, height: size })
+                          .resize({
+                            kernel: 'nearest'
+                          });
+                    });
+              }
             }
           }
         ],
-        // type: 'javascript/auto',
+        type: 'javascript/auto'
       },
+
+      {
+        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        exclude: path.resolve(__dirname, 'src/images/gallery'),
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'
+        }
+      },
+
+
+      // {
+      //   test: /\.(png|jpg|jpeg)$/,
+      //   include: path.resolve(__dirname, 'src/images/gallery'),
+      //   use: [
+      //     {
+      //       loader: 'responsive-loader-modern',
+      //       options: {
+      //         adapter: require('responsive-loader-modern/sharp'),
+      //         sizes: [256, 512, 768, 1024],
+      //         format: 'png',
+      //         placeholder: true,
+      //         placeholderSize: 32,
+      //         quality: 100,
+      //         name: 'images/[name]-square-[width].[ext]',
+      //         outputPath: 'images',
+      //         publicPath: 'images/',
+      //
+      //         // Use a custom Sharp processing function
+      //         transform: (sharp, resourcePath, options) => {
+      //           return sharp.metadata()
+      //               .then(metadata => {
+      //                 // Determine the size of the square (smaller dimension)
+      //                 const size = Math.min(metadata.width, metadata.height);
+      //
+      //                 // Calculate crop coordinates to center the square
+      //                 const left = Math.floor((metadata.width - size) / 2);
+      //                 const top = Math.floor((metadata.height - size) / 2);
+      //
+      //                 console.log(`Creating square thumbnail for ${resourcePath}: ${size}x${size} from ${metadata.width}x${metadata.height}`);
+      //
+      //                 // First extract the square region
+      //                 return sharp
+      //                     .extract({
+      //                       left: left,
+      //                       top: top,
+      //                       width: size,
+      //                       height: size
+      //                     })
+      //                     .resize({
+      //                       width: options.width,
+      //                       height: options.width, // Force same height as width
+      //                       fit: 'fill',
+      //                       kernel: 'nearest' // Use nearest neighbor for pixel art
+      //                     });
+      //               });
+      //         }
+      //       }
+      //     }
+      //   ],
+      //   type: 'javascript/auto'
+      // },
+
+
+          //
+          // {
+          //   loader: 'responsive-loader',
+          //   options: {
+          //     adapter: require('./src/utils/squareAdapter'),
+          //     sizes: [256, 512, 768, 1024],
+          //     format: 'png',
+          //     placeholder: true,
+          //     placeholderSize: 32,
+          //     quality: 100,
+          //     name: 'images/thumbnails/[name]-square-[width].[ext]',
+          //     progressive: false
+          //   }
+          // }
+
+          // {
+          //   loader: 'responsive-loader',
+          //   options: {
+          //     adapter: require('responsive-loader/sharp'),
+          //     sizes: [256, 512, 768, 1024],
+          //     format: 'png',
+          //     placeholder: true,
+          //     placeholderSize: 32,
+          //     quality: 100,
+          //     // name: 'images/thumbnails/[name]-[width].[ext]',
+          //     name: 'images/thumbnails/[name]-square-[width].[ext]',
+          //     progressive: false,
+          //
+          //     extract: {
+          //       width: 1080,  // Square width (same as original height)
+          //       height: 1080, // Square height
+          //       left: 420,    // Centered horizontally: (1920 - 1080) / 2 = 420
+          //       top: 0        // Start from top
+          //     },
+          //
+          //     // Let Sharp handle the dynamic cropping to square
+          //     adapterOptions: {
+          //       // Create a square crop from the center
+          //       fit: 'cover',
+          //       position: 'center',
+          //
+          //       // Force output to be square
+          //       width: (metadata) => metadata.height,
+          //       height: (metadata) => metadata.height,
+          //
+          //       // Maintain pixel-perfect rendering
+          //       withoutEnlargement: true,
+          //       kernel: 'nearest',
+          //       gamma: false,
+          //       options: {
+          //         interpolator: 'nearest',
+          //         resampling: 'nearest'
+          //       }
+          //     }
+          //   }
+          // }
+
+      // Original Pixel Art Images - Keep Original without resizing
+      // {
+      //   test: /\.(png|jpg|jpeg)$/,
+      //   include: path.resolve(__dirname, 'src/images/gallery'),
+      //   loader: 'file-loader',
+      //   options: {
+      //     name: 'images/originals/[name].[ext]'
+      //   },
+      //   // This ensures the rule only applies to the import, not to the image itself
+      //   // This prevents double-processing with responsive-loader
+      //   resourceQuery: /original/
+      // },
+
+
+
+      // {
+      //   test: /\.(png|jpg|jpeg|gif|webp)$/,
+      //   exclude: path.resolve(__dirname, 'src/images/gallery'),
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]',
+      //         outputPath: 'images/',
+      //         publicPath: 'images/'
+      //       }
+      //     }
+      //   ],
+      // },
       {
         test: /\.(svg)$/,
         use: [
@@ -119,19 +287,57 @@ module.exports = {
       // }
     ]
   },
-  plugins: [new ImageminWebpWebpackPlugin({
-    config: [{
-      test: /\.(jpe?g|png)/,
-      options: {
-        nearLossless: 85,
-        // quality:  75
-      }
-    }],
-    overrideExtension: true,
-    detailedLogs: false,
-    silent: false,
-    strict: true
-  }),
+  plugins: [
+    // Ensure pixel-perfect thumbnails with no blurring
+    new ImageMinimizerPlugin({
+      minimizer: {
+        implementation: ImageMinimizerPlugin.sharpMinify,
+        options: {
+          encodeOptions: {
+            // Override defaults for pixel art
+            png: {
+              palette: true, // Use palette colors for PNG
+              compressionLevel: 9, // Maximum compression without quality loss
+              quality: 100,
+            },
+            webp: {
+              lossless: true, // Use lossless webp for pixel art
+              quality: 100,
+              reductionEffort: 6, // Maximum effort
+            }
+          },
+        },
+      },
+      // Only minify these formats, don't convert them
+      generator: [
+        {
+          type: "asset",
+          implementation: ImageMinimizerPlugin.sharpGenerate,
+          options: {
+            encodeOptions: {
+              webp: {
+                lossless: true,
+                quality: 100,
+                reductionEffort: 6,
+              },
+            },
+          },
+        },
+      ],
+    }),
+    new ImageminWebpWebpackPlugin({
+      config: [{
+        test: /\.(jpe?g|png)/,
+        options: {
+          nearLossless: 85,
+          // quality:  75
+        }
+      }],
+      overrideExtension: true,
+      detailedLogs: false,
+      silent: false,
+      strict: true
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: process.env.NODE_ENV === 'production' ? {

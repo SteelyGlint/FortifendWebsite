@@ -11,9 +11,9 @@ import './images/capsule7.png';
 import './images/title-logo.png';
 import './images/favicon.png';
 
-import './images/screenshot_orthogonal.jpg';
-import './images/screenshot_terrain_hud.jpg';
-import './images/screenshot_hud_trade.jpg';
+import './images/gallery/screenshot_orthogonal.jpg';
+import './images/gallery/screenshot_terrain_hud.jpg';
+import './images/gallery/screenshot_hud_trade.jpg';
 
 import './images/mail.svg';
 import './images/mailbox.svg';
