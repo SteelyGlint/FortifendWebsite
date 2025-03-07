@@ -1,6 +1,8 @@
 @use "sass:color";
 @use 'sass:math' as math;
 @use 'fonts' as *;
+@use "sass:map" as map;
+@use "sass:list" as list;
 
 
 
@@ -210,7 +212,7 @@ a {
   /* Set minimum width to ensure coverage on large screens */
   min-width: 100vw; /* Always fill viewport width */
   height: auto; /* Let height adjust based on aspect ratio */
-  min-height: 100%; /* Make sure it fills the container height */
+  min-height: 100%; /* Make sure it fills the container height */  /* broken on android */
 
   /* Position from the top for better framing */
   top: 0;
@@ -220,9 +222,24 @@ a {
   object-fit: cover;
   object-position: center top;
 
-  /* Android Chrome specific rules */
-  //transform: translateZ(0); // Hardware acceleration
-  backface-visibility: hidden; // Prevents rendering glitches
+  /* Mobile-specific adjustments */
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    max-width: 100%; /* Prevent overflow */
+  }
+  //
+  ///* Android Chrome specific rules */
+  //@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  //  transform: translateZ(0); /* Enable hardware acceleration */
+  //  backface-visibility: hidden;
+  //}
+
+  /* Safari-specific fix */
+  @supports (-webkit-touch-callout: none) {
+    object-fit: cover;
+    object-position: top center;
+  }
 
   /* Add Safari-specific orientation change fix */
   @supports (-webkit-touch-callout: none) {
@@ -252,6 +269,150 @@ a {
     //overflow-x: hidden;
   }
 }
+
+// Define aspect ratio breakpoints
+$aspect-ratios: (
+        "ultrawide": (21, 9),  // 21:9 ultrawide monitors
+        "wide": (16, 9),       // 16:9 standard widescreen
+        "standard": (4, 3),    // 4:3 standard monitor
+        "square": (1, 1),      // Square viewport (rare)
+        "portrait": (9, 16),   // Portrait smartphone/tablet
+        "tall": (3, 4)         // Tall viewport
+);
+
+// Define height scales for different aspect ratios
+$height-scales: (
+        "ultrawide": 40vh,
+        "wide": 35vh,
+        "standard": 30vh,
+        "square": 28vh,
+        "portrait": 25vh,
+        "tall": 22vh
+);
+
+// Define object-position adjustments for different ratios
+$vertical-positions: (
+        "ultrawide": 25%,
+        "wide": 30%,
+        "standard": 35%,
+        "square": 40%,
+        "portrait": 45%,
+        "tall": 50%
+);
+
+// Banner position adjustments
+$banner-positions: (
+        "ultrawide": 90%,
+        "wide": 85%,
+        "standard": 80%,
+        "square": 75%,
+        "portrait": 70%,
+        "tall": 65%
+);
+
+// Generate aspect ratio media queries
+@each $name, $ratio in $aspect-ratios {
+  $width: list.nth($ratio, 1);
+  $height: list.nth($ratio, 2);
+
+  // Generate min-aspect-ratio queries
+  @media (min-aspect-ratio: #{$width}/#{$height}) {
+    .cropped-image {
+      height: map.get($height-scales, $name);
+
+      img {
+        object-position: center map.get($vertical-positions, $name);
+      }
+    }
+
+    .banner-container {
+      top: map.get($banner-positions, $name);
+    }
+  }
+}
+
+// Combine with device width for more specific targeting
+$device-breakpoints: (
+        "desktop": 1200px,
+        "tablet": 768px,
+        "mobile": 480px
+);
+
+// Nested loop for device width + aspect ratio
+@each $device, $width in $device-breakpoints {
+  @each $ratio-name, $ratio in $aspect-ratios {
+    $ratio-width: list.nth($ratio, 1);
+    $ratio-height: list.nth($ratio, 2);
+
+    // More specific media queries
+    @if $device == "mobile" {
+      @media (max-width: $width) and (max-aspect-ratio: #{$ratio-width}/#{$ratio-height}) {
+        .cropped-image {
+          // Adjust for mobile + specific aspect ratio
+          height: map.get($height-scales, $ratio-name) * 0.8;
+        }
+      }
+    } @else {
+      @media (min-width: $width) and (min-aspect-ratio: #{$ratio-width}/#{$ratio-height}) {
+        .cropped-image {
+          // Adjustments for larger devices with specific aspect ratios
+          height: map.get($height-scales, $ratio-name) * 1.1;
+        }
+      }
+    }
+  }
+}
+
+// Additional loop for handling pixel scaling at different viewport sizes
+$scale-factors: (1, 2, 3, 4);
+$pixel-breakpoints: (
+        "xs": 480px,
+        "sm": 768px,
+        "md": 1024px,
+        "lg": 1440px
+);
+
+@each $breakpoint-name, $breakpoint-value in $pixel-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @each $scale in $scale-factors {
+      // Only use appropriate scales for each breakpoint
+      @if ($breakpoint-name == "xs" and $scale <= 2) or
+          ($breakpoint-name == "sm" and $scale <= 3) or
+          ($breakpoint-name == "md") or
+          ($breakpoint-name == "lg" and $scale >= 2) {
+
+        .pixel-art-#{$breakpoint-name}-#{$scale}x {
+          image-rendering: pixelated;
+          image-rendering: -moz-crisp-edges;
+          image-rendering: crisp-edges;
+          transform: scale($scale);
+          transform-origin: 0 0;
+        }
+      }
+    }
+  }
+}
+
+// Debugging helper classes with loop
+$debug-colors: (
+        "outline": rgba(255, 0, 0, 0.5),
+        "background": rgba(0, 255, 0, 0.1),
+        "border": rgba(0, 0, 255, 0.8)
+);
+
+@each $name, $color in $debug-colors {
+  .debug-#{$name} {
+    @if $name == "outline" {
+      outline: 2px solid $color !important;
+    } @else if $name == "background" {
+      background-color: $color !important;
+    } @else if $name == "border" {
+      border: 1px solid $color !important;
+    }
+  }
+}
+
+
 
 .banner-container {
   position: absolute;

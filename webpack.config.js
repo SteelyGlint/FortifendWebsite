@@ -143,6 +143,7 @@ module.exports = {
         useShortDoctype: true
       } : false,
       inject: true,
+      headHtmlSnippet: '<style>html,body{background-color:#2b222a;margin:0;padding:0;}</style>'
     }),
     new HtmlWebpackPlugin({
       filename: "debug.html",

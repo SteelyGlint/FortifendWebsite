@@ -6,7 +6,8 @@ import './styles/main.scss';
 // import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/capsule6.png';
+// import './images/capsule6.png';
+import './images/capsule7.png';
 import './images/title-logo.png';
 import './images/favicon.png';
 
