@@ -249,3 +249,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize lazy video loading
     initLazyVideoTrailers();
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pixelZoom = new PixelZoom({
+        thumbnailSelector: '.gallery-thumbnail',
+        fullscreenSelector: '#fullscreen-view',
+        imgSelector: '#fullscreen-image',
+        minScale: 1,
+        maxScale: 8,
+        scaleStep: 1,
+        smoothTransition: true
+    });
+
+    // Fade out instructions after 3 seconds
+    const instructions = document.querySelector('.instructions');
+    setTimeout(() => {
+        instructions.classList.add('fade');
+    }, 3000);
+});

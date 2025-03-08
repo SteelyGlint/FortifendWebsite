@@ -508,28 +508,21 @@ $debug-colors: (
 #fullpage {
   display: none;
   position: fixed;
-  z-index: 9998;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85); /* Add overlay background */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 
   .fullpage-image {
-    width: 90%; /* Reduced from 100% to create margin */
-    height: 90%; /* Reduced from 100% to create margin */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-color: transparent;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
-    //transform: scale(1); /* Integer scaling for pixel art */
-    transform-origin: center center;
-    margin: 5vh auto; /* Add vertical and horizontal margin */
   }
 }
 
@@ -625,6 +618,87 @@ $debug-colors: (
 
   .artwork-description {
     display: none;
+    color: color.adjust($text-light, $alpha: -0.15);
+  }
+}
+
+// Gallery component
+.gallery {
+  width: 100%;
+  margin: 0 auto;
+
+  // Grid layout
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  // Item container
+  &__item {
+    border-radius: $border-radius;
+    box-shadow: 0 4px 12px color.adjust($card-bg, $alpha: -0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+
+    // Default (mobile) styling
+    @media (max-width: 768px) {
+      flex: 0 0 100%;
+      max-width: none;
+    }
+
+    // Responsive grid layouts
+    @media (min-width: 764px) and (max-width: 1500px) {
+      flex: 0 0 calc(50% - 10px);
+      max-width: calc(50% - 10px);
+    }
+
+    @media (min-width: 1501px) and (max-width: 2000px) {
+      flex: 0 0 calc(33.333% - 14px);
+      max-width: calc(33.333% - 14px);
+    }
+
+    @media (min-width: 2001px) {
+      flex: 0 0 calc(25% - 15px);
+      max-width: calc(25% - 15px);
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px color.adjust($card-bg, $alpha: -0.4);
+      background: color.adjust($card-bg, $alpha: 0);
+    }
+  }
+
+  // Image
+  &__image {
+    object-fit: contain;
+    width: 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    border-radius: $border-radius $border-radius 0 0;
+    display: block;
+    height: auto;
+  }
+
+  // Info container
+  &__info {
+    position: relative;
+    background-color: #3c3f41;
+    font-size: 2.4rem;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  // Text
+  &__text {
+    margin: 0 0 15px 0;
     color: color.adjust($text-light, $alpha: -0.15);
   }
 }
