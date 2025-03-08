@@ -256,10 +256,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_capsule7_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/capsule7.png */ "./src/images/capsule7.png");
 /* harmony import */ var _images_title_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./images/title-logo.png */ "./src/images/title-logo.png");
 /* harmony import */ var _images_favicon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./images/favicon.png */ "./src/images/favicon.png");
-/* harmony import */ var _images_mail_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images/mail.svg */ "./src/images/mail.svg");
-/* harmony import */ var _images_mailbox_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./images/mailbox.svg */ "./src/images/mailbox.svg");
-/* harmony import */ var _images_social_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./images/social.svg */ "./src/images/social.svg");
-/* harmony import */ var _components_LazyVideoTrailer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/LazyVideoTrailer */ "./src/components/LazyVideoTrailer.js");
+/* harmony import */ var _images_gallery_screenshot_orthogonal_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images/gallery/screenshot_orthogonal.jpg */ "./src/images/gallery/screenshot_orthogonal.jpg");
+/* harmony import */ var _images_gallery_screenshot_orthogonal_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_images_gallery_screenshot_orthogonal_jpg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _images_gallery_screenshot_terrain_hud_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./images/gallery/screenshot_terrain_hud.jpg */ "./src/images/gallery/screenshot_terrain_hud.jpg");
+/* harmony import */ var _images_gallery_screenshot_terrain_hud_jpg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_images_gallery_screenshot_terrain_hud_jpg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _images_gallery_screenshot_hud_trade_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./images/gallery/screenshot_hud_trade.jpg */ "./src/images/gallery/screenshot_hud_trade.jpg");
+/* harmony import */ var _images_gallery_screenshot_hud_trade_jpg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_images_gallery_screenshot_hud_trade_jpg__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _images_mail_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./images/mail.svg */ "./src/images/mail.svg");
+/* harmony import */ var _images_mailbox_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./images/mailbox.svg */ "./src/images/mailbox.svg");
+/* harmony import */ var _images_social_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./images/social.svg */ "./src/images/social.svg");
+/* harmony import */ var _components_LazyVideoTrailer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/LazyVideoTrailer */ "./src/components/LazyVideoTrailer.js");
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -273,9 +279,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import './images/gallery/screenshot_orthogonal.jpg';
-// import './images/gallery/screenshot_terrain_hud.jpg';
-// import './images/thumbnails/screenshot_terrain_hud-256.jpg';
+
+
+
 
 
 
@@ -509,9 +515,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Other initialization code...
 
     // Initialize lazy video loading
-    ;(0,_components_LazyVideoTrailer__WEBPACK_IMPORTED_MODULE_7__.initLazyVideoTrailers)();
+    ;(0,_components_LazyVideoTrailer__WEBPACK_IMPORTED_MODULE_10__.initLazyVideoTrailers)();
 });
 
+
+/***/ }),
+
+/***/ "./src/images/gallery/screenshot_hud_trade.jpg":
+/*!*****************************************************!*\
+  !*** ./src/images/gallery/screenshot_hud_trade.jpg ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+module.exports = {"src":"screenshot_hud_trade.jpg","srcSet":"/images/thumbnails/screenshot_hud_trade-256.jpg 256w, /images/thumbnails/screenshot_hud_trade-512.jpg 512w, /images/thumbnails/screenshot_hud_trade-768.jpg 768w, /images/thumbnails/screenshot_hud_trade-1024.jpg 1024w","images":{"256":"/images/thumbnails/screenshot_hud_trade-256.jpg","512":"/images/thumbnails/screenshot_hud_trade-512.jpg","768":"/images/thumbnails/screenshot_hud_trade-768.jpg","1024":"/images/thumbnails/screenshot_hud_trade-1024.jpg"},"width":1342,"height":755}
+
+/***/ }),
+
+/***/ "./src/images/gallery/screenshot_orthogonal.jpg":
+/*!******************************************************!*\
+  !*** ./src/images/gallery/screenshot_orthogonal.jpg ***!
+  \******************************************************/
+/***/ ((module) => {
+
+module.exports = {"src":"screenshot_orthogonal.jpg","srcSet":"/images/thumbnails/screenshot_orthogonal-256.jpg 256w, /images/thumbnails/screenshot_orthogonal-512.jpg 512w, /images/thumbnails/screenshot_orthogonal-768.jpg 768w, /images/thumbnails/screenshot_orthogonal-1024.jpg 1024w","images":{"256":"/images/thumbnails/screenshot_orthogonal-256.jpg","512":"/images/thumbnails/screenshot_orthogonal-512.jpg","768":"/images/thumbnails/screenshot_orthogonal-768.jpg","1024":"/images/thumbnails/screenshot_orthogonal-1024.jpg"},"width":525,"height":295}
+
+/***/ }),
+
+/***/ "./src/images/gallery/screenshot_terrain_hud.jpg":
+/*!*******************************************************!*\
+  !*** ./src/images/gallery/screenshot_terrain_hud.jpg ***!
+  \*******************************************************/
+/***/ ((module) => {
+
+module.exports = {"src":"screenshot_terrain_hud.jpg","srcSet":"/images/thumbnails/screenshot_terrain_hud-256.jpg 256w, /images/thumbnails/screenshot_terrain_hud-512.jpg 512w, /images/thumbnails/screenshot_terrain_hud-768.jpg 768w, /images/thumbnails/screenshot_terrain_hud-1024.jpg 1024w","images":{"256":"/images/thumbnails/screenshot_terrain_hud-256.jpg","512":"/images/thumbnails/screenshot_terrain_hud-512.jpg","768":"/images/thumbnails/screenshot_terrain_hud-768.jpg","1024":"/images/thumbnails/screenshot_terrain_hud-1024.jpg"},"width":1920,"height":1080}
 
 /***/ }),
 
@@ -908,4 +944,4 @@ module.exports = __webpack_require__.p + "video/trailer_combat_simple.webm";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.78ed57eee24d85fb3b70.js.map
+//# sourceMappingURL=main.69a2cbb648d6cb6b93db.js.map
