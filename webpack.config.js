@@ -62,47 +62,83 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
-      // Replace your problematic gallery image rule with this one
       {
         test: /\.(png|jpg|jpeg)$/,
         include: path.resolve(__dirname, 'src/images/gallery'),
-        resourceQuery: { not: [/original/] }, // Apply this loader if ?original is NOT in the query
         use: [
           {
-            loader: 'responsive-loader-modern',
+            loader: path.resolve(__dirname, 'src/utils/square-sharp-loader.js'),
             options: {
-              adapter: require('responsive-loader-modern/sharp'),
               sizes: [256, 512, 768, 1024],
-              format: 'png',
-              placeholder: true,
-              placeholderSize: 32,
-              quality: 100,
-              name: 'images/thumbnails/[name]-square-[width].[ext]',
-
-              // Simplified transform function
-              transform: (sharp) => {
-                return sharp.metadata()
-                    .then(metadata => {
-                      // Get the smaller dimension
-                      const size = Math.min(metadata.width, metadata.height);
-
-                      // Calculate center crop
-                      const left = Math.floor((metadata.width - size) / 2);
-                      const top = Math.floor((metadata.height - size) / 2);
-
-                      // Extract square from center
-                      return sharp
-                          .extract({ left, top, width: size, height: size })
-                          .resize({
-                            kernel: 'nearest'
-                          });
-                    });
-              }
+              outputPath: 'images/thumbnails',
+              publicPath: '/'
             }
           }
-        ],
-        type: 'javascript/auto'
+        ]
       },
+
+
+
+      // Original Pixel Art Images - Keep Original without resizing
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        include: path.resolve(__dirname, 'src/images/gallery'),
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images/originals/',
+          publicPath: '/'
+        },
+        // This ensures the rule only applies to the import, not to the image itself
+        // This prevents double-processing with responsive-loader
+        resourceQuery: /original/
+      },
+
+
+
+
+      //
+      // // Replace your problematic gallery image rule with this one
+      // {
+      //   test: /\.(png|jpg|jpeg)$/,
+      //   include: path.resolve(__dirname, 'src/images/gallery'),
+      //   resourceQuery: { not: [/original/] }, // Apply this loader if ?original is NOT in the query
+      //   use: [
+      //     {
+      //       loader: 'responsive-loader-modern',
+      //       options: {
+      //         adapter: require('responsive-loader-modern/sharp'),
+      //         sizes: [256, 512, 768, 1024],
+      //         format: 'png',
+      //         placeholder: true,
+      //         placeholderSize: 32,
+      //         quality: 100,
+      //         name: 'images/thumbnails/[name]-square-[width].[ext]',
+      //
+      //         // Simplified transform function
+      //         transform: (sharp) => {
+      //           return sharp.metadata()
+      //               .then(metadata => {
+      //                 // Get the smaller dimension
+      //                 const size = Math.min(metadata.width, metadata.height);
+      //
+      //                 // Calculate center crop
+      //                 const left = Math.floor((metadata.width - size) / 2);
+      //                 const top = Math.floor((metadata.height - size) / 2);
+      //
+      //                 // Extract square from center
+      //                 return sharp
+      //                     .extract({ left, top, width: size, height: size })
+      //                     .resize({
+      //                       kernel: 'nearest'
+      //                     });
+      //               });
+      //         }
+      //       }
+      //     }
+      //   ],
+      //   type: 'javascript/auto'
+      // },
 
       {
         test: /\.(png|jpg|jpeg|gif|webp)$/,
@@ -224,19 +260,6 @@ module.exports = {
           //   }
           // }
 
-      // Original Pixel Art Images - Keep Original without resizing
-      // {
-      //   test: /\.(png|jpg|jpeg)$/,
-      //   include: path.resolve(__dirname, 'src/images/gallery'),
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: 'images/originals/[name].[ext]'
-      //   },
-      //   // This ensures the rule only applies to the import, not to the image itself
-      //   // This prevents double-processing with responsive-loader
-      //   resourceQuery: /original/
-      // },
-
 
 
       // {
@@ -308,7 +331,8 @@ module.exports = {
           },
         },
       },
-      // Only minify these formats, don't convert them
+
+    //   // Only minify these formats, don't convert them
       generator: [
         {
           type: "asset",
@@ -325,19 +349,19 @@ module.exports = {
         },
       ],
     }),
-    new ImageminWebpWebpackPlugin({
-      config: [{
-        test: /\.(jpe?g|png)/,
-        options: {
-          nearLossless: 85,
-          // quality:  75
-        }
-      }],
-      overrideExtension: true,
-      detailedLogs: false,
-      silent: false,
-      strict: true
-    }),
+    // new ImageminWebpWebpackPlugin({
+    //   config: [{
+    //     test: /\.(jpe?g|png)/,
+    //     options: {
+    //       nearLossless: 85,
+    //       // quality:  75
+    //     }
+    //   }],
+    //   overrideExtension: true,
+    //   detailedLogs: false,
+    //   silent: false,
+    //   strict: true
+    // }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: process.env.NODE_ENV === 'production' ? {

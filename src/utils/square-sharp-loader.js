@@ -21,7 +21,7 @@ module.exports = function(content) {
     // Create file name
     const url = loaderUtils.interpolateName(
         this,
-        '[name][ext]',
+        '[name].[ext]',
         { content }
     );
 

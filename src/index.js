@@ -15,6 +15,7 @@ import './images/gallery/screenshot_orthogonal.jpg';
 import './images/gallery/screenshot_terrain_hud.jpg';
 import './images/gallery/screenshot_hud_trade.jpg';
 
+
 import './images/mail.svg';
 import './images/mailbox.svg';
 import './images/social.svg';
@@ -191,9 +192,23 @@ const init = () => {
             const exactWidth = tempImg.naturalWidth * scale;
             const exactHeight = tempImg.naturalHeight * scale;
 
-            fullPageImager.style.backgroundImage = 'url(' + img.src + ')';
-            fullPageImager.style.width = `${exactWidth}px`;
-            fullPageImager.style.height = `${exactHeight}px`;
+            let pathname = img.src;
+            // Replace the path component
+            pathname = pathname.replace(/\/images\/\/thumbnails\/|\/images\/thumbnails\//, '/');
+
+            // Remove the size suffix (e.g., -512, -256, etc.)
+            pathname = pathname.replace(/-\d+(\.[^.]+)$/, '$1');
+
+            // pathname = pathname.replace(/.jpg$/, '.webp');
+
+            // Update the URL with the new pathname
+            // tempImg.src = pathname;
+
+            fullPageImager.style.backgroundImage = 'url(' + pathname + ')';
+            // fullPageImager.style.width = `${exactWidth}px`;
+            // fullPageImager.style.height = `${exactHeight}px`;
+            fullPageImager.style.width = `1920px`;
+            fullPageImager.style.height = `1080px`;
             fullPage.style.display = 'block';
 
             // Add small delay before adding opacity for transition effect
