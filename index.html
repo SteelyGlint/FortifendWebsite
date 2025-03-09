@@ -7,32 +7,26 @@
   <meta name="author" content="Information about the author here">
 <!--  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"/>
-  <link rel="preload" href="./images/capsule7.webp" as="image">
-  <link rel="preload" href="./images/title-logo.webp" as="image">
+  <link rel="preload" href="./images/capsule7.png" as="image">
+  <link rel="preload" href="./images/title-logo.png" as="image">
   <link rel="icon" type="image/png" href="./images/favicon.png">
-<script defer src="npm.style-loader.93c1c0a777b14eace0ec.js"></script><script defer src="npm.css-loader.d7f97f25f781b04a29ba.js"></script><script defer src="main.69a2cbb648d6cb6b93db.js"></script></head>
+<script defer src="npm.style-loader.93c1c0a777b14eace0ec.js"></script><script defer src="npm.css-loader.d7f97f25f781b04a29ba.js"></script><script defer src="main.0c4eb6654703cffa2ad9.js"></script></head>
 <body>
   <header id="header">
     <div class="cropped-image">
-      <img src="./images/capsule7.webp"  alt="Moss monster in the background>">
+      <img src="./images/capsule7.png"  alt="Moss monster in the background>">
 <!--      <img src="./images/capsule6.webp" width="450px"  alt="Moss monster in the background>">-->
 
     </div>
 
     <div class="banner-container">
-      <img src="./images/title-logo.webp" width="600px" class="banner-image" alt="fortifend logo">
+      <img src="./images/title-logo.png"
+           class="banner-image"
+           alt="fortifend logo">
     </div>
 
-
     <div class="image-placeholder"></div>
-
   </header>
-
-
-
-  <div id="fullpage" onclick="this.style.display='none';">
-    <div class="fullpage-image"></div>
-  </div>
 
 
   <div class="marketing-content">
@@ -40,11 +34,30 @@
     <h1 class="tagline">Master the terrain</h1>
     <h1 class="tagline">Withstand the onslaught</h1>
   </div>
-  <div class="marketing-content">
-    <h4>
-      Command the high ground in Fortifend, where 3D terrain transforms tower defense strategy. Build your medieval city with careful planning, then watch it come alive with magical warfare as you defend against seasonal threats. Beauty and brutality in perfect balance.
-    </h4>
 
+  <div class="features">
+    <ul class="features__list">
+      <li class="features__item">
+        <div class="features__icon">🏔️</div>
+        <h3 class="features__title">3D Terrain Mastery</h3>
+        <p class="features__description">Exploit elevation advantages for devastating attack range and strategic damage bonuses.</p>
+      </li>
+
+      <li class="features__item">
+        <div class="features__icon">⚒️</div>
+        <h3 class="features__title">Resource Management</h3>
+        <p class="features__description">Balance critical resources with defensive capabilities to ensure your settlement thrives.</p>
+      </li>
+
+      <li class="features__item">
+        <div class="features__icon">🏰</div>
+        <h3 class="features__title">Multi-Tiered Defenses</h3>
+        <p class="features__description">Create devastating defensive arrangements by combining tower abilities with 3D terrain advantages.</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="marketing-content">
     <a href="https://store.steampowered.com/app/YOUR_APP_ID/Fortifend/" class="cta-button">
       WISHLIST ON STEAM
     </a>
@@ -52,84 +65,66 @@
 
   <div id="container">
     <div class="content">
-      <div class="gallery-container">
-        <div class="artwork-grid">
-          <div class="artwork-item">
-            <img src="./images/thumbnails/screenshot_hud_trade-512.jpg" alt="Game Artwork 1" class="artwork-image">
-            <div class="artwork-info">
-              <h6>Exchange food, tools, and labor while managing your trade balance to ensure your settlement thrives through every season.</h6>
+
+      <div class="gallery">
+        <div class="gallery__grid">
+          <div class="gallery__item">
+            <img
+                    src="./images/thumbnails/screenshot_hud_trade-768.webp"
+                    data-fullsize="./screenshot_hud_trade.webp"
+                    alt="Trade interface showing resource exchange"
+                    class="gallery__image">
+            <div class="gallery__info">
+              <h5 class="gallery__text">Exchange food, tools, and labor while managing your trade balance to ensure your settlement thrives through every season.</h5>
             </div>
           </div>
-          <div class="artwork-item">
-            <img src="./images/thumbnails/screenshot_terrain_hud-512.jpg" alt="Game Artwork 1" class="artwork-image">
-            <div class="artwork-info">
-              <h6>Navigate diverse terrain with forests, mountains, and waterways while defending against looming threats in this pixel-perfect strategy adventure.</h6>
-            </div>
-          </div>
-          <div class="artwork-item">
-            <img src="./images/thumbnails/screenshot_orthogonal-512.jpg" alt="Game Artwork 1" class="artwork-image">
-            <div class="artwork-info">
-              <h6>Establish your fortress at strategic locations across a vibrant, procedurally generated world.</h6>
+          <div class="gallery__item">
+            <img
+                    src="./images/thumbnails/screenshot_terrain_hud-768.webp"
+                    data-fullsize="./screenshot_terrain_hud.webp"
+                    alt="Game Artwork 1"
+                    class="gallery__image">
+            <div class="gallery__info">
+              <h5 class="gallery__text">Navigate diverse terrain with forests, mountains, and waterways while defending against looming threats in this pixel-perfect strategy adventure.</h5>
             </div>
           </div>
         </div>
+
+        <div class="gallery__fullscreen" style="display: none;">
+          <!-- Image to display in fullscreen -->
+          <img class="gallery__fullscreen-image" src="" alt="Fullscreen game screenshot">
+
+          <!-- Close button -->
+          <button class="gallery__fullscreen-close" aria-label="Close fullscreen view">×</button>
+
+          <!-- Usage instructions -->
+          <div class="gallery__fullscreen-instructions instructions">
+            <span>Scroll or pinch to zoom • Click and drag to pan</span>
+          </div>
+
+        </div>
+
       </div>
-    </div>
-
-    <div class="content">
-      <div>
-        Coming Soon.
-      </div>
-    </div>
-
-  </div>
-
-  <!-- In your index.html or template -->
-  <div class="trailer-section">
-    <h2>Game Trailer</h2>
-
-    <div id="game-trailer" class="video-placeholder" data-video-src="trailer_combat_simple.mp4">
-      <div class="play-button">▶</div>
-      <p>Click to watch trailer</p>
-    </div>
-  </div>
-
-  <!-- Add additional placeholders as needed -->
-  <div class="gameplay-section">
-    <h2>Gameplay Preview</h2>
-
-    <div id="gameplay-preview" class="video-placeholder" data-video-src="trailer_combat_simple.webm">
-      <div class="play-button">▶</div>
-      <p>Click to watch gameplay</p>
     </div>
   </div>
 
 
 
-  <footer>
-    <div class="gallery-container">
-      <div class="artwork-grid">
-        <div class="icon-item">
-          <img src="./images/mail.svg" class="icon-image" alt="mail logo">
-          <div class="icon-info">
-            <p class="icon-description">Lorem ipsum</p>
-          </div>
-        </div>
-        <div class="icon-item">
-          <img src="./images/mailbox.svg" class="icon-image" alt="mailbox logo">
-          <div class="icon-info">
-            <p class="icon-description">Lorem ipsum</p>
-          </div>
-        </div>
-        <div class="icon-item">
-          <img src="./images/social.svg" class="icon-image"  alt="social media">
-          <div class="icon-info">
-            <p class="icon-description">Lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+<!--  <div class="trailer-section">-->
+<!--    <div id="game-trailer" class="video-placeholder" data-video-src="trailer_combat_simple.mp4">-->
+<!--      <div class="play-button">▶</div>-->
+<!--      <p>Click to watch trailer</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Add additional placeholders as needed &ndash;&gt;-->
+<!--  <div class="gameplay-section">-->
+<!--    <div id="gameplay-preview" class="video-placeholder" data-video-src="trailer_combat_simple.webm">-->
+<!--      <div class="play-button">▶</div>-->
+<!--      <p>Click to watch gameplay</p>-->
+<!--    </div>-->
+<!--  </div>-->
+
 
   <style>
     #debug-panel {
