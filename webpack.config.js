@@ -63,13 +63,13 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(png|jpg|jpeg)$/,
+        test: /\.(png|jpg|jpeg|webp)$/,
         include: path.resolve(__dirname, 'src/images/gallery'),
         use: [
           {
             loader: path.resolve(__dirname, 'src/utils/square-sharp-loader.js'),
             options: {
-              sizes: [256, 512, 768, 1024],
+              sizes: [512, 768, 1024],
               outputPath: 'images/thumbnails',
               publicPath: '/'
             }
@@ -388,9 +388,9 @@ module.exports = {
       } : false,
       inject: true,
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: '[name].[contenthash].css',
-    // }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
     ...(process.env.NODE_ENV === 'production' ? [
       new CompressionPlugin({
         algorithm: 'gzip',

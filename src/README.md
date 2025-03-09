@@ -2,3 +2,4 @@
 
     ffmpeg -i input.mp4 -c:v libx264 -profile:v baseline -level 3.0 -pix_fmt yuv420p -c:a aac -strict experimental -b:a 128k -movflags faststart output.mp4
 
+    ffmpeg -i output.mp4 -ss 00:00:03 -frames:v 1 screenshot.jpeg

@@ -31,6 +31,11 @@
   -webkit-font-smoothing: none;
 }
 
+@mixin silkscreen {
+  font-family: Silkscreen, -apple-system, monospace;
+  font-weight: 300;
+  -webkit-font-smoothing: none;
+}
 
 // Font imports
 @font-face {
@@ -57,6 +62,71 @@
   font-style: normal;
   font-display: swap;
 
+}
+/*
+  Source Sans Pro: Best for readability in dense information sections, with a clean, modern look that works well at smaller sizes.
+  Barlow: Has a slightly technical feel that matches strategy games, with excellent readability and character distinction.
+  Open Sans: Superior readability across all screen sizes and devices, with a neutral but professional appearance.
+  Rajdhani & Oxanium: Added for headings - they have a technical/sci-fi feel that complements strategy games while remaining readable.
+ */
+
+
+// Import statements for recommended body text fonts
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600&display=swap');
+
+// Body text font mixins
+@mixin source-sans {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+@mixin source-sans-semibold {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+@mixin barlow {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+@mixin barlow-medium {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+
+@mixin open-sans {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.02em;
+}
+
+// Heading font mixins
+@mixin rajdhani-bold {
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.03em;
+}
+
+@mixin oxanium {
+  font-family: 'Oxanium', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
 }
 
 // TODO: https://stackoverflow.com/questions/12562631/web-fonts-and-providing-fallback-fonts

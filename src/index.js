@@ -11,9 +11,9 @@ import './images/capsule7.png';
 import './images/title-logo.png';
 import './images/favicon.png';
 
-import './images/gallery/screenshot_orthogonal.jpg';
-import './images/gallery/screenshot_terrain_hud.jpg';
-import './images/gallery/screenshot_hud_trade.jpg';
+import './images/gallery/screenshot_terrain_hud.webp';
+import './images/gallery/screenshot_hud_trade.webp';
+import './images/gallery/trailer_combat_simple.webp';
 
 
 import './images/mail.svg';
@@ -25,100 +25,101 @@ import { PixelZoom } from './pixel-zoom.js';
 
 
 // Function for fullscreen view with integer scaling
-const applyFullscreenIntegerScaling = (img, fullPageImager) => {
-    const naturalWidth = img.naturalWidth;
-    const naturalHeight = img.naturalHeight;
+// const applyFullscreenIntegerScaling = (img, fullPageImager) => {
+//     const naturalWidth = img.naturalWidth;
+//     const naturalHeight = img.naturalHeight;
+//
+//     // Get viewport dimensions (with margin)
+//     const viewportWidth = window.innerWidth * 0.8;
+//     const viewportHeight = window.innerHeight * 0.8;
+//
+//     // Calculate maximum integer scale that fits viewport
+//     const scaleX = Math.floor(viewportWidth / naturalWidth);
+//     const scaleY = Math.floor(viewportHeight / naturalHeight);
+//
+//     // Use the smaller scale to ensure it fits both dimensions
+//     const scale = Math.max(1, Math.min(scaleX, scaleY));
+//
+//     return scale;
+// };
+// const scalePixelArtBanner = () => {
+//     const banner = document.querySelector('.banner-image');
+//     if (!banner || !banner.complete) return;
+//
+//     // Get natural dimensions
+//     const naturalWidth = banner.naturalWidth;
+//     const naturalHeight = banner.naturalHeight;
+//
+//     // Get container width
+//     const containerWidth = banner.parentElement.clientWidth;
+//
+//     // Calculate scale factor
+//     let scale;
+//
+//     // For mobile devices, we may need to scale down
+//     if (window.innerWidth <= 768) {
+//         // For smaller screens, find the largest scale that fits but is <= 1
+//         // This ensures we scale down by integer divisions (1/2, 1/3, etc.)
+//         // which preserves pixel clarity
+//         const maxScale = 1;
+//         const rawScale = containerWidth / naturalWidth;
+//
+//         if (rawScale < 1) {
+//             // Scale down by integer division: 1/2, 1/3, 1/4, etc.
+//             // Find the largest divisor that results in scale <= rawScale
+//             for (let divisor = 1; divisor <= 4; divisor++) {
+//                 const candidateScale = 1 / divisor;
+//                 if (candidateScale <= rawScale) {
+//                     scale = candidateScale;
+//                     break;
+//                 }
+//             }
+//             // If no suitable divisor found, use raw scale with a minimum of 0.25
+//             if (!scale) scale = Math.max(0.25, rawScale);
+//         } else {
+//             // If it fits at original size, use scale 1
+//             scale = 1;
+//         }
+//     } else {
+//         // For larger screens, use integer upscaling as before
+//         // scale = Math.floor(containerWidth / naturalWidth);
+//         // scale = Math.max(1, scale); // Never go below 1x
+//     }
+//
+//     // Apply precise scaling
+//     banner.style.width = `${Math.round(naturalWidth * scale)}px`;
+//     banner.style.height = `${Math.round(naturalHeight * scale)}px`;
+//
+//     // Log for debugging
+//     console.log(`Banner scaled to ${scale}x on ${window.innerWidth}px wide screen`);
+// };
 
-    // Get viewport dimensions (with margin)
-    const viewportWidth = window.innerWidth * 0.8;
-    const viewportHeight = window.innerHeight * 0.8;
-
-    // Calculate maximum integer scale that fits viewport
-    const scaleX = Math.floor(viewportWidth / naturalWidth);
-    const scaleY = Math.floor(viewportHeight / naturalHeight);
-
-    // Use the smaller scale to ensure it fits both dimensions
-    const scale = Math.max(1, Math.min(scaleX, scaleY));
-
-    return scale;
-};
-const scalePixelArtBanner = () => {
-    const banner = document.querySelector('.banner-image');
-    if (!banner || !banner.complete) return;
-
-    // Get natural dimensions
-    const naturalWidth = banner.naturalWidth;
-    const naturalHeight = banner.naturalHeight;
-
-    // Get container width
-    const containerWidth = banner.parentElement.clientWidth;
-
-    // Calculate scale factor
-    let scale;
-
-    // For mobile devices, we may need to scale down
-    if (window.innerWidth <= 768) {
-        // For smaller screens, find the largest scale that fits but is <= 1
-        // This ensures we scale down by integer divisions (1/2, 1/3, etc.)
-        // which preserves pixel clarity
-        const maxScale = 1;
-        const rawScale = containerWidth / naturalWidth;
-
-        if (rawScale < 1) {
-            // Scale down by integer division: 1/2, 1/3, 1/4, etc.
-            // Find the largest divisor that results in scale <= rawScale
-            for (let divisor = 1; divisor <= 4; divisor++) {
-                const candidateScale = 1 / divisor;
-                if (candidateScale <= rawScale) {
-                    scale = candidateScale;
-                    break;
-                }
-            }
-            // If no suitable divisor found, use raw scale with a minimum of 0.25
-            if (!scale) scale = Math.max(0.25, rawScale);
-        } else {
-            // If it fits at original size, use scale 1
-            scale = 1;
-        }
-    } else {
-        // For larger screens, use integer upscaling as before
-        // scale = Math.floor(containerWidth / naturalWidth);
-        // scale = Math.max(1, scale); // Never go below 1x
-    }
-
-    // Apply precise scaling
-    banner.style.width = `${Math.round(naturalWidth * scale)}px`;
-    banner.style.height = `${Math.round(naturalHeight * scale)}px`;
-
-    // Log for debugging
-    console.log(`Banner scaled to ${scale}x on ${window.innerWidth}px wide screen`);
-};
-// Handles integer scaling with overflow protection
-const applyIntegerScaling = () => {
-    let callbackfn = img => {
-        img.onload = function() {
-            // Get natural dimensions
-            const naturalWidth = this.naturalWidth;
-            const naturalHeight = this.naturalHeight;
-
-            // Calculate the container width
-            const containerWidth = this.parentElement.clientWidth;
-
-            // For thumbnail view - use container-based scaling
-            let scale = Math.floor(containerWidth / naturalWidth);
-
-            // Ensure scale is at least 1
-            scale = Math.max(1, scale);
-
-            // Set thumbnail dimensions to exact integer multiples
-            this.style.width = `${naturalWidth * scale}px`;
-            this.style.height = `${naturalHeight * scale}px`;
-        };
-    };
-
-    const imgs = document.querySelectorAll('.artwork-item img');
-    imgs.forEach(callbackfn);
-};
+// // Handles integer scaling with overflow protection
+// const applyIntegerScaling = () => {
+//     let callbackfn = img => {
+//         img.onload = function() {
+//             // Get natural dimensions
+//             const naturalWidth = this.naturalWidth;
+//             const naturalHeight = this.naturalHeight;
+//
+//             // Calculate the container width
+//             const containerWidth = this.parentElement.clientWidth;
+//
+//             // For thumbnail view - use container-based scaling
+//             let scale = Math.floor(containerWidth / naturalWidth);
+//
+//             // Ensure scale is at least 1
+//             scale = Math.max(1, scale);
+//
+//             // Set thumbnail dimensions to exact integer multiples
+//             this.style.width = `${naturalWidth * scale}px`;
+//             this.style.height = `${naturalHeight * scale}px`;
+//         };
+//     };
+//
+//     const imgs = document.querySelectorAll('.artwork-item img');
+//     imgs.forEach(callbackfn);
+// };
 
 // Detect Safari browser
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -161,8 +162,6 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        scalePixelArtBanner();
-        applyIntegerScaling();
         if (isSafari) {
             handleSafariImages();
         }    }, 100);
@@ -171,79 +170,11 @@ window.addEventListener('resize', () => {
 
 window.onload = ev => {
     init();
-    scalePixelArtBanner();
-    handleSafariImages();
 }
 
 const init = () => {
-    console.log('hello I am a sample index.js');
-    const imgs = document.querySelectorAll('.artwork-item img');
-    const fullPage = document.querySelector('#fullpage');
-    const fullPageImager = document.querySelector('#fullpage .fullpage-image');
-    //
-    // imgs.forEach(img => {
-    //     img.addEventListener('click', function() {
-    //         // Calculate integer scale for this specific image
-    //         const scale = applyFullscreenIntegerScaling(img, fullPageImager);
-    //
-    //         // Create a new image element to access natural dimensions
-    //         const tempImg = new Image();
-    //         tempImg.src = img.src;
-    //
-    //         // Set exact pixel dimensions instead of scaling
-    //         const exactWidth = tempImg.naturalWidth * scale;
-    //         const exactHeight = tempImg.naturalHeight * scale;
-    //
-    //         let pathname = img.src;
-    //         // Replace the path component
-    //         pathname = pathname.replace(/\/images\/\/thumbnails\/|\/images\/thumbnails\//, '/');
-    //
-    //         // Remove the size suffix (e.g., -512, -256, etc.)
-    //         pathname = pathname.replace(/-\d+(\.[^.]+)$/, '$1');
-    //
-    //         // pathname = pathname.replace(/.jpg$/, '.webp');
-    //
-    //         // Update the URL with the new pathname
-    //         // tempImg.src = pathname;
-    //
-    //         fullPageImager.style.backgroundImage = 'url(' + pathname + ')';
-    //         // fullPageImager.style.width = `${exactWidth}px`;
-    //         // fullPageImager.style.height = `${exactHeight}px`;
-    //         fullPageImager.style.width = `1920px`;
-    //         fullPageImager.style.height = `1080px`;
-    //         fullPage.style.display = 'block';
-    //
-    //         // Add small delay before adding opacity for transition effect
-    //         setTimeout(() => {
-    //             fullPage.style.opacity = '1';
-    //         }, 10);
-    //     });
-    // });
-
-    // Replace the onclick attribute with an event listener
-    // fullPage.addEventListener('click', function() {
-    //     this.style.opacity = '0';
-    //
-    //     // Wait for transition to complete before hiding element
-    //     setTimeout(() => {
-    //         this.style.display = 'none';
-    //     }, 300); // Match transition duration
-    // });
-
-    // Apply integer scaling to thumbnails
-    applyIntegerScaling();
+    handleSafariImages();
 }
-
-// window.addEventListener('load', () => {
-//     const banner = document.querySelector('.banner-image');
-//     if (banner) {
-//         banner.addEventListener('load', scalePixelArtBanner);
-//         // If image is already loaded
-//         if (banner.complete) {
-//             scalePixelArtBanner();
-//         }
-//     }
-// });
 
 document.addEventListener('DOMContentLoaded', () => {
     // Other initialization code...
@@ -251,26 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize lazy video loading
     initLazyVideoTrailers();
 });
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const pixelZoom = new PixelZoom({
-//         thumbnailSelector: '.gallery-thumbnail',
-//         fullscreenSelector: '#fullscreen-view',
-//         imgSelector: '#fullscreen-image',
-//         minScale: 1,
-//         maxScale: 8,
-//         scaleStep: 1,
-//         smoothTransition: true
-//     });
-//
-//     // Fade out instructions after 3 seconds
-//     const instructions = document.querySelector('.instructions');
-//     setTimeout(() => {
-//         instructions.classList.add('fade');
-//     }, 3000);
-// });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     // Remove any existing fullscreen viewing code and replace with this:
@@ -286,4 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make available globally for debugging
     window.pixelZoom = pixelZoom;
+
+    // Fade out instructions after 3 seconds
+    const instructions = document.querySelector('.instructions');
+    setTimeout(() => {
+        instructions.classList.add('fade');
+    }, 3000);
 });

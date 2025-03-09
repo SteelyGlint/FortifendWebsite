@@ -59,11 +59,24 @@ export class PixelZoom {
         // Add close button listener
         const closeButton = this.fullscreenContainer.querySelector('.gallery__fullscreen-close');
         if (closeButton) {
+            closeButton.removeEventListener('click', this.closeFullscreen.bind(this));
+            closeButton.removeEventListener('touchend', this.closeFullscreen.bind(this));
+
             closeButton.addEventListener('click', (e) => {
-                this.closeFullscreen();
+                e.preventDefault();
                 e.stopPropagation(); // Prevent event bubbling
+                this.closeFullscreen();
+            });
+
+            // Add explicit touchend handler for iOS/mobile
+            closeButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // Prevent event bubbling
+                this.closeFullscreen();
             });
         }
+
+
 
         // Add ESC key listener
         document.addEventListener('keydown', (e) => {
@@ -113,6 +126,15 @@ export class PixelZoom {
             const rect = this.fullscreenImage.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
+//
+//             // Calculate viewport center coordinates
+//             const viewportCenterX = window.innerWidth / 2;
+//             const viewportCenterY = window.innerHeight / 2;
+//
+// // Calculate mouse position relative to viewport center
+// // Positive values = right/below center, negative values = left/above center
+//             const mouseX = e.clientX - viewportCenterX;
+//             const mouseY = e.clientY - viewportCenterY;
 
             // Apply zoom
             this.zoom(delta, mouseX, mouseY);
@@ -464,7 +486,7 @@ export class PixelZoom {
      */
     updateTransform() {
         // Ensure the image doesn't go too far out of bounds
-        // this.constrainImagePosition();
+        this.constrainImagePosition();
 
         // Apply transform - use rounded values to ensure pixel-perfect rendering
         const transform = `translate(${Math.round(this.currentX)}px, ${Math.round(this.currentY)}px) scale(${this.scale})`;
