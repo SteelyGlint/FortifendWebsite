@@ -20,19 +20,12 @@
     </div>
 
     <div class="banner-container">
-      <img src="./images/title-logo.png" width="600px" class="banner-image" alt="fortifend logo">
+      <img src="./images/title-logo.png" width="600" class="banner-image" alt="fortifend logo">
     </div>
 
 
     <div class="image-placeholder"></div>
-
   </header>
-
-
-
-  <div id="fullpage" onclick="this.style.display='none';">
-    <div class="fullpage-image"></div>
-  </div>
 
 
   <div class="marketing-content">
@@ -56,26 +49,62 @@
       <div class="gallery">
         <div class="gallery__grid">
           <div class="gallery__item">
-            <img src="./images/thumbnails/screenshot_hud_trade-512.jpg" alt="Game Artwork 1" class="gallery__image">
+            <img
+                    src="./images/thumbnails/screenshot_hud_trade-512.jpg"
+                    data-fullsize="./screenshot_hud_trade.jpg"
+                    alt="Trade interface showing resource exchange"
+                    class="gallery__image">
             <div class="gallery__info">
               <h6 class="gallery__text">Exchange food, tools, and labor while managing your trade balance to ensure your settlement thrives through every season.</h6>
             </div>
           </div>
           <div class="gallery__item">
-            <img src="./images/thumbnails/screenshot_terrain_hud-512.jpg" alt="Game Artwork 1" class="gallery__image">
+            <img
+                    src="./images/thumbnails/screenshot_terrain_hud-512.jpg"
+                    data-fullsize="./screenshot_terrain_hud.jpg"
+                    alt="Game Artwork 1"
+                    class="gallery__image">
             <div class="gallery__info">
               <h6 class="gallery__text">Navigate diverse terrain with forests, mountains, and waterways while defending against looming threats in this pixel-perfect strategy adventure.</h6>
             </div>
           </div>
           <div class="gallery__item">
-            <img src="./images/thumbnails/screenshot_orthogonal-512.jpg" alt="Game Artwork 1" class="gallery__image">
+            <img
+                    src="./images/thumbnails/screenshot_orthogonal-512.jpg"
+                    data-fullsize="./screenshot_orthogonal.jpg"
+                    alt="Game Artwork 1"
+                    class="gallery__image">
             <div class="gallery__info">
               <h6 class="gallery__text">Establish your fortress at strategic locations across a vibrant, procedurally generated world.</h6>
             </div>
           </div>
         </div>
+
+        <div class="gallery__fullscreen">
+          <!-- Image to display in fullscreen -->
+          <img class="gallery__fullscreen-image" src="" alt="Fullscreen game screenshot">
+
+          <!-- Close button -->
+          <button class="gallery__fullscreen-close" aria-label="Close fullscreen view">×</button>
+
+          <!-- Usage instructions -->
+          <div class="gallery__fullscreen-instructions">
+            <span>Scroll or pinch to zoom • Click and drag to pan</span>
+          </div>
+
+          <!-- Loading indicator -->
+          <div class="gallery__fullscreen-loading">
+            <div class="gallery__fullscreen-loading-spinner">
+              <div class="gallery__fullscreen-loading-spinner-circle"></div>
+              <div class="gallery__fullscreen-loading-spinner-circle"></div>
+              <div class="gallery__fullscreen-loading-spinner-circle"></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+  </div>
 
 
 

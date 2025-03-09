@@ -21,6 +21,8 @@ import './images/mailbox.svg';
 import './images/social.svg';
 
 import { initLazyVideoTrailers } from './components/LazyVideoTrailer';
+import { PixelZoom } from './pixel-zoom.js';
+
 
 // Function for fullscreen view with integer scaling
 const applyFullscreenIntegerScaling = (img, fullPageImager) => {
@@ -178,45 +180,45 @@ const init = () => {
     const imgs = document.querySelectorAll('.artwork-item img');
     const fullPage = document.querySelector('#fullpage');
     const fullPageImager = document.querySelector('#fullpage .fullpage-image');
-
-    imgs.forEach(img => {
-        img.addEventListener('click', function() {
-            // Calculate integer scale for this specific image
-            const scale = applyFullscreenIntegerScaling(img, fullPageImager);
-
-            // Create a new image element to access natural dimensions
-            const tempImg = new Image();
-            tempImg.src = img.src;
-
-            // Set exact pixel dimensions instead of scaling
-            const exactWidth = tempImg.naturalWidth * scale;
-            const exactHeight = tempImg.naturalHeight * scale;
-
-            let pathname = img.src;
-            // Replace the path component
-            pathname = pathname.replace(/\/images\/\/thumbnails\/|\/images\/thumbnails\//, '/');
-
-            // Remove the size suffix (e.g., -512, -256, etc.)
-            pathname = pathname.replace(/-\d+(\.[^.]+)$/, '$1');
-
-            // pathname = pathname.replace(/.jpg$/, '.webp');
-
-            // Update the URL with the new pathname
-            // tempImg.src = pathname;
-
-            fullPageImager.style.backgroundImage = 'url(' + pathname + ')';
-            // fullPageImager.style.width = `${exactWidth}px`;
-            // fullPageImager.style.height = `${exactHeight}px`;
-            fullPageImager.style.width = `1920px`;
-            fullPageImager.style.height = `1080px`;
-            fullPage.style.display = 'block';
-
-            // Add small delay before adding opacity for transition effect
-            setTimeout(() => {
-                fullPage.style.opacity = '1';
-            }, 10);
-        });
-    });
+    //
+    // imgs.forEach(img => {
+    //     img.addEventListener('click', function() {
+    //         // Calculate integer scale for this specific image
+    //         const scale = applyFullscreenIntegerScaling(img, fullPageImager);
+    //
+    //         // Create a new image element to access natural dimensions
+    //         const tempImg = new Image();
+    //         tempImg.src = img.src;
+    //
+    //         // Set exact pixel dimensions instead of scaling
+    //         const exactWidth = tempImg.naturalWidth * scale;
+    //         const exactHeight = tempImg.naturalHeight * scale;
+    //
+    //         let pathname = img.src;
+    //         // Replace the path component
+    //         pathname = pathname.replace(/\/images\/\/thumbnails\/|\/images\/thumbnails\//, '/');
+    //
+    //         // Remove the size suffix (e.g., -512, -256, etc.)
+    //         pathname = pathname.replace(/-\d+(\.[^.]+)$/, '$1');
+    //
+    //         // pathname = pathname.replace(/.jpg$/, '.webp');
+    //
+    //         // Update the URL with the new pathname
+    //         // tempImg.src = pathname;
+    //
+    //         fullPageImager.style.backgroundImage = 'url(' + pathname + ')';
+    //         // fullPageImager.style.width = `${exactWidth}px`;
+    //         // fullPageImager.style.height = `${exactHeight}px`;
+    //         fullPageImager.style.width = `1920px`;
+    //         fullPageImager.style.height = `1080px`;
+    //         fullPage.style.display = 'block';
+    //
+    //         // Add small delay before adding opacity for transition effect
+    //         setTimeout(() => {
+    //             fullPage.style.opacity = '1';
+    //         }, 10);
+    //     });
+    // });
 
     // Replace the onclick attribute with an event listener
     // fullPage.addEventListener('click', function() {
@@ -251,20 +253,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     const pixelZoom = new PixelZoom({
+//         thumbnailSelector: '.gallery-thumbnail',
+//         fullscreenSelector: '#fullscreen-view',
+//         imgSelector: '#fullscreen-image',
+//         minScale: 1,
+//         maxScale: 8,
+//         scaleStep: 1,
+//         smoothTransition: true
+//     });
+//
+//     // Fade out instructions after 3 seconds
+//     const instructions = document.querySelector('.instructions');
+//     setTimeout(() => {
+//         instructions.classList.add('fade');
+//     }, 3000);
+// });
+
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove any existing fullscreen viewing code and replace with this:
     const pixelZoom = new PixelZoom({
-        thumbnailSelector: '.gallery-thumbnail',
-        fullscreenSelector: '#fullscreen-view',
-        imgSelector: '#fullscreen-image',
+        thumbnailSelector: '.gallery__image',
+        fullscreenSelector: '.gallery__fullscreen',
+        imgSelector: '.gallery__fullscreen-image',
         minScale: 1,
         maxScale: 8,
         scaleStep: 1,
         smoothTransition: true
     });
 
-    // Fade out instructions after 3 seconds
-    const instructions = document.querySelector('.instructions');
-    setTimeout(() => {
-        instructions.classList.add('fade');
-    }, 3000);
+    // Make available globally for debugging
+    window.pixelZoom = pixelZoom;
 });

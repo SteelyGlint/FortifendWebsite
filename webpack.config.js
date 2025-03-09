@@ -388,9 +388,9 @@ module.exports = {
       } : false,
       inject: true,
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].[contenthash].css',
+    // }),
     ...(process.env.NODE_ENV === 'production' ? [
       new CompressionPlugin({
         algorithm: 'gzip',

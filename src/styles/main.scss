@@ -621,6 +621,105 @@ $debug-colors: (
     color: color.adjust($text-light, $alpha: -0.15);
   }
 }
+//
+//// Gallery component
+//.gallery {
+//  width: 100%;
+//  margin: 0 auto;
+//
+//  // Grid layout
+//  &__grid {
+//    display: flex;
+//    flex-wrap: wrap;
+//    gap: 20px;
+//    justify-content: center;
+//  }
+//
+//  // Item container
+//  &__item {
+//    border-radius: $border-radius;
+//    box-shadow: 0 4px 12px color.adjust($card-bg, $alpha: -0.5);
+//    transition: transform 0.3s ease, box-shadow 0.3s ease;
+//    overflow: hidden;
+//    margin-bottom: 20px;
+//    position: relative;
+//    display: inline-block;
+//
+//    // Default (mobile) styling
+//    @media (max-width: 768px) {
+//      flex: 0 0 100%;
+//      max-width: none;
+//    }
+//
+//    // Responsive grid layouts
+//    @media (min-width: 764px) and (max-width: 1500px) {
+//      flex: 0 0 calc(50% - 10px);
+//      max-width: calc(50% - 10px);
+//    }
+//
+//    @media (min-width: 1501px) and (max-width: 2000px) {
+//      flex: 0 0 calc(33.333% - 14px);
+//      max-width: calc(33.333% - 14px);
+//    }
+//
+//    @media (min-width: 2001px) {
+//      flex: 0 0 calc(25% - 15px);
+//      max-width: calc(25% - 15px);
+//    }
+//
+//    &:hover {
+//      transform: translateY(-5px);
+//      box-shadow: 0 6px 16px color.adjust($card-bg, $alpha: -0.4);
+//      background: color.adjust($card-bg, $alpha: 0);
+//    }
+//  }
+//
+//  // Image
+//  &__image {
+//    object-fit: contain;
+//    width: 100%;
+//    image-rendering: pixelated;
+//    image-rendering: -moz-crisp-edges;
+//    image-rendering: crisp-edges;
+//    border-radius: $border-radius $border-radius 0 0;
+//    display: block;
+//    height: auto;
+//  }
+//
+//  // Info container
+//  &__info {
+//    position: relative;
+//    background-color: #3c3f41;
+//    font-size: 2.4rem;
+//    color: #fff;
+//    padding: 10px 20px;
+//    text-align: center;
+//  }
+//
+//  // Text
+//  &__text {
+//    margin: 0 0 15px 0;
+//    color: color.adjust($text-light, $alpha: -0.15);
+//  }
+//}
+
+
+/* Gallery SCSS for Fortifend website with BEM methodology */
+/* Add to your main.scss or import it */
+
+// Mixins
+@mixin pixel-perfect {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; // IE fallback
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 // Gallery component
 .gallery {
@@ -644,6 +743,7 @@ $debug-colors: (
     margin-bottom: 20px;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 
     // Default (mobile) styling
     @media (max-width: 768px) {
@@ -678,9 +778,7 @@ $debug-colors: (
   &__image {
     object-fit: contain;
     width: 100%;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+    @include pixel-perfect;
     border-radius: $border-radius $border-radius 0 0;
     display: block;
     height: auto;
@@ -700,6 +798,185 @@ $debug-colors: (
   &__text {
     margin: 0 0 15px 0;
     color: color.adjust($text-light, $alpha: -0.15);
+  }
+
+  // Fullscreen view
+  &__fullscreen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    @include flex-center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+
+    &--active {
+      opacity: 1;
+    }
+
+    // Fullscreen image
+    &-image {
+      max-width: none; // Override max-width to allow for custom scaling
+      max-height: none; // Override max-height to allow for custom scaling
+      @include pixel-perfect;
+      position: absolute; // Positioned by JS
+      transform-origin: 0 0; // Important for proper scaling
+
+      // Ensure Safari compatibility
+      @supports (-webkit-touch-callout: none) {
+        -webkit-transform-origin: 0 0;
+        -webkit-backface-visibility: hidden;
+      }
+    }
+
+    // Close button
+    &-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1;
+
+      background-color: rgba(43, 34, 42, 0.8); // Using $page-bg with opacity
+      color: $accent-color; // Using the accent-color (#9eff4a)
+      border: 1px solid rgba(158, 255, 74, 0.3); // Subtle accent-color border
+      border-radius: 50%;
+      //transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+
+      @include flex-center;
+
+
+      // Mobile styling (default)
+      top: 15px;
+      right: 15px;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+
+      // Tablet/Medium devices
+      @media (min-width: 764px) and (max-width: 1500px) {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+
+      // Desktop/Large devices
+      @media (min-width: 1501px) and (max-width: 2000px) {
+        top: 25px;
+        right: 25px;
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+      }
+
+      // Extra Large devices
+      @media (min-width: 2001px) {
+        top: 30px;
+        right: 30px;
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: scale(1.05);
+      }
+
+      // Ensure tap target is large enough on mobile
+      @media (max-width: 480px) {
+        // Keep minimum size for better touch accessibility
+        width: 40px;
+        height: 40px;
+        // Move slightly further from edge for easier access
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+    // Instructions overlay
+    &-instructions {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+      z-index: 1;
+      pointer-events: none; // Allow clicking through
+      transition: opacity 0.5s ease;
+
+      &.fade {
+        opacity: 0;
+      }
+    }
+
+    // Loading indicator
+    &-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include flex-center;
+      z-index: 1;
+
+      &-spinner {
+        width: 40px;
+        height: 40px;
+        position: relative;
+
+        &-circle {
+          box-sizing: border-box;
+          display: block;
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          margin: 4px;
+          border: 4px solid $accent-color;
+          border-radius: 50%;
+          animation: gallery-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          border-color: $accent-color transparent transparent transparent;
+
+          &:nth-child(1) {
+            animation-delay: -0.45s;
+          }
+
+          &:nth-child(2) {
+            animation-delay: -0.3s;
+          }
+
+          &:nth-child(3) {
+            animation-delay: -0.15s;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes gallery-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
