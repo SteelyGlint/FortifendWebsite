@@ -4,12 +4,13 @@
 @use "sass:map" as map;
 @use "sass:list" as list;
 
-
+// color palette
+// https://lospec.com/palette-list/comfy52
 
 // Variables
 $header-font: 'Silkscreen', 'Press Start 2P', monospace;
 $description-font:  'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-$accent-color: #9eff4a; // Adjusted to a softer yellow-green that matches the monster
+$accent-color:  #94ad39 ;
 
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
@@ -367,10 +368,7 @@ a {
   padding: 0px;
   width: 100%; /* Container width */
   height: 900px; /* Fixed height */
-  //height: 100vh; /* Fixed height */
   overflow: hidden; /* Hide parts outside container */
-  /* NO position: relative here */
-  //position: relative;
   display: contents;
 
 
@@ -399,7 +397,7 @@ a {
   //
   /* Set minimum width to ensure coverage on large screens */
   min-width: 100vw; /* Always fill viewport width */
-  height: auto; /* Let height adjust based on aspect ratio */
+  //height: auto; /* Let height adjust based on aspect ratio */
   min-height: 100vh; /* Make sure it fills the container height */  /* broken on android */
 
 
@@ -413,16 +411,10 @@ a {
 
   /* Mobile-specific adjustments */
   @media (max-width: 768px) {
-    width: 100%;
-    height: 100%;
+    min-width: 100vw; /* Always fill viewport width */
     max-width: 100%; /* Prevent overflow */
+    min-height: calc(100vw * (200/160));
   }
-  //
-  ///* Android Chrome specific rules */
-  //@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-  //  transform: translateZ(0); /* Enable hardware acceleration */
-  //  backface-visibility: hidden;
-  //}
 
   /* Safari-specific fix */
   @supports (-webkit-touch-callout: none) {
@@ -439,176 +431,12 @@ a {
   }
 }
 
-//
-///* Add media query for extra large displays */
-//@media (min-width: 2400px) {
-//  .cropped-image img {
-//    /* Scale up for extremely large monitors */
-//    min-width: 100%; /* Use container width */
-//    width: 100vw; /* Ensure viewport coverage */
-//    max-width: none; /* Override max-width limitations */
-//  }
-//}
-//
-///* Add only these Safari-specific fixes */
-//@supports (-webkit-touch-callout: none) {
-//  /* Only fix the container horizontal overflow in Safari */
-//  header, #header {
-//    //max-width: 100vw;
-//    //overflow-x: hidden;
-//  }
-//}
-//
-//// Define aspect ratio breakpoints
-//$aspect-ratios: (
-//        "ultrawide": (21, 9),  // 21:9 ultrawide monitors
-//        "wide": (16, 9),       // 16:9 standard widescreen
-//        "standard": (4, 3),    // 4:3 standard monitor
-//        "square": (1, 1),      // Square viewport (rare)
-//        "portrait": (9, 16),   // Portrait smartphone/tablet
-//        "tall": (3, 4)         // Tall viewport
-//);
-//
-//// Define height scales for different aspect ratios
-//$height-scales: (
-//        "ultrawide": 40vh,
-//        "wide": 35vh,
-//        "standard": 30vh,
-//        "square": 28vh,
-//        "portrait": 25vh,
-//        "tall": 22vh
-//);
-//
-//// Define object-position adjustments for different ratios
-//$vertical-positions: (
-//        "ultrawide": 25%,
-//        "wide": 30%,
-//        "standard": 35%,
-//        "square": 40%,
-//        "portrait": 45%,
-//        "tall": 50%
-//);
-//
-//// Banner position adjustments
-//$banner-positions: (
-//        "ultrawide": 90%,
-//        "wide": 85%,
-//        "standard": 80%,
-//        "square": 75%,
-//        "portrait": 70%,
-//        "tall": 65%
-//);
-//
-//// Generate aspect ratio media queries
-//@each $name, $ratio in $aspect-ratios {
-//  $width: list.nth($ratio, 1);
-//  $height: list.nth($ratio, 2);
-//
-//  // Generate min-aspect-ratio queries
-//  @media (min-aspect-ratio: #{$width}/#{$height}) {
-//    .cropped-image {
-//      height: map.get($height-scales, $name);
-//
-//      img {
-//        object-position: center map.get($vertical-positions, $name);
-//      }
-//    }
-//
-//    .banner-container {
-//      top: map.get($banner-positions, $name);
-//    }
-//  }
-//}
-//
-//// Combine with device width for more specific targeting
-//$device-breakpoints: (
-//        "desktop": 1200px,
-//        "tablet": 768px,
-//        "mobile": 480px
-//);
-//
-//// Nested loop for device width + aspect ratio
-//@each $device, $width in $device-breakpoints {
-//  @each $ratio-name, $ratio in $aspect-ratios {
-//    $ratio-width: list.nth($ratio, 1);
-//    $ratio-height: list.nth($ratio, 2);
-//
-//    // More specific media queries
-//    @if $device == "mobile" {
-//      @media (max-width: $width) and (max-aspect-ratio: #{$ratio-width}/#{$ratio-height}) {
-//        .cropped-image {
-//          // Adjust for mobile + specific aspect ratio
-//          height: map.get($height-scales, $ratio-name) * 0.8;
-//        }
-//      }
-//    } @else {
-//      @media (min-width: $width) and (min-aspect-ratio: #{$ratio-width}/#{$ratio-height}) {
-//        .cropped-image {
-//          // Adjustments for larger devices with specific aspect ratios
-//          height: map.get($height-scales, $ratio-name) * 1.1;
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//// Additional loop for handling pixel scaling at different viewport sizes
-//$scale-factors: (1, 2, 3, 4);
-//$pixel-breakpoints: (
-//        "xs": 480px,
-//        "sm": 768px,
-//        "md": 1024px,
-//        "lg": 1440px
-//);
-//
-//@each $breakpoint-name, $breakpoint-value in $pixel-breakpoints {
-//  @media (min-width: $breakpoint-value) {
-//    @each $scale in $scale-factors {
-//      // Only use appropriate scales for each breakpoint
-//      @if ($breakpoint-name == "xs" and $scale <= 2) or
-//          ($breakpoint-name == "sm" and $scale <= 3) or
-//          ($breakpoint-name == "md") or
-//          ($breakpoint-name == "lg" and $scale >= 2) {
-//
-//        .pixel-art-#{$breakpoint-name}-#{$scale}x {
-//          image-rendering: pixelated;
-//          image-rendering: -moz-crisp-edges;
-//          image-rendering: crisp-edges;
-//          transform: scale($scale);
-//          transform-origin: 0 0;
-//        }
-//      }
-//    }
-//  }
-//}
-//
-//// Debugging helper classes with loop
-//$debug-colors: (
-//        "outline": rgba(255, 0, 0, 0.5),
-//        "background": rgba(0, 255, 0, 0.1),
-//        "border": rgba(0, 0, 255, 0.8)
-//);
-//
-//@each $name, $color in $debug-colors {
-//  .debug-#{$name} {
-//    @if $name == "outline" {
-//      outline: 2px solid $color !important;
-//    } @else if $name == "background" {
-//      background-color: $color !important;
-//    } @else if $name == "border" {
-//      border: 1px solid $color !important;
-//    }
-//  }
-//}
-
 .banner-container {
   margin: 0px;
   display: flex;
   margin-top: calc(100vh * 0.45);
   padding: 0px;
-  //width: 100px; /* Container width */
   width: 100%;
-  //max-width: 2400px; // Increased for large monitors
 }
 
 /* Refactor your banner-image class in main.scss */
@@ -766,91 +594,6 @@ a {
     color: color.adjust($text-light, $alpha: -0.15);
   }
 }
-//
-//// Gallery component
-//.gallery {
-//  width: 100%;
-//  margin: 0 auto;
-//
-//  // Grid layout
-//  &__grid {
-//    display: flex;
-//    flex-wrap: wrap;
-//    gap: 20px;
-//    justify-content: center;
-//  }
-//
-//  // Item container
-//  &__item {
-//    border-radius: $border-radius;
-//    box-shadow: 0 4px 12px color.adjust($card-bg, $alpha: -0.5);
-//    transition: transform 0.3s ease, box-shadow 0.3s ease;
-//    overflow: hidden;
-//    margin-bottom: 20px;
-//    position: relative;
-//    display: inline-block;
-//
-//    // Default (mobile) styling
-//    @media (max-width: 768px) {
-//      flex: 0 0 100%;
-//      max-width: none;
-//    }
-//
-//    // Responsive grid layouts
-//    @media (min-width: 764px) and (max-width: 1500px) {
-//      flex: 0 0 calc(50% - 10px);
-//      max-width: calc(50% - 10px);
-//    }
-//
-//    @media (min-width: 1501px) and (max-width: 2000px) {
-//      flex: 0 0 calc(33.333% - 14px);
-//      max-width: calc(33.333% - 14px);
-//    }
-//
-//    @media (min-width: 2001px) {
-//      flex: 0 0 calc(25% - 15px);
-//      max-width: calc(25% - 15px);
-//    }
-//
-//    &:hover {
-//      transform: translateY(-5px);
-//      box-shadow: 0 6px 16px color.adjust($card-bg, $alpha: -0.4);
-//      background: color.adjust($card-bg, $alpha: 0);
-//    }
-//  }
-//
-//  // Image
-//  &__image {
-//    object-fit: contain;
-//    width: 100%;
-//    image-rendering: pixelated;
-//    image-rendering: -moz-crisp-edges;
-//    image-rendering: crisp-edges;
-//    border-radius: $border-radius $border-radius 0 0;
-//    display: block;
-//    height: auto;
-//  }
-//
-//  // Info container
-//  &__info {
-//    position: relative;
-//    background-color: #3c3f41;
-//    font-size: 2.4rem;
-//    color: #fff;
-//    padding: 10px 20px;
-//    text-align: center;
-//  }
-//
-//  // Text
-//  &__text {
-//    margin: 0 0 15px 0;
-//    color: color.adjust($text-light, $alpha: -0.15);
-//  }
-//}
-
-
-/* Gallery SCSS for Fortifend website with BEM methodology */
-/* Add to your main.scss or import it */
 
 // Mixins
 @mixin pixel-perfect {
@@ -1253,63 +996,3 @@ blockquote {
     margin-bottom: 0;
   }
 }
-
-
-//body::after {
-//  content: '';
-//  position: fixed;
-//  top: 0;
-//  left: 0;
-//  width: 100%;
-//  height: 100%;
-//  background-image:
-//          linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
-//          linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
-//  background-size: 10px 10px; /* Adjust grid size as needed */
-//  pointer-events: none;
-//  z-index: 9999;
-//}
-//
-///* Basic Grid Helper - Guaranteed to work */
-///* High Contrast Grid Helper - Optimized for dark backgrounds */
-//body.show-grid {
-//  /* 10px grid with high-visibility light lines */
-//  background-image:
-//          /* Horizontal lines */
-//          linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
-//            /* Vertical lines */
-//          linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
-//            /* 100px grid with colored accent lines */
-//          linear-gradient(to bottom, transparent 99px, rgba(64, 224, 208, 0.5) 1px),
-//          linear-gradient(to right, transparent 99px, rgba(64, 224, 208, 0.5) 1px);
-//  background-size:
-//          10px 10px,
-//          10px 10px,
-//          100px 100px,
-//          100px 100px;
-//}
-//
-///* Alternate version with brighter colors if needed */
-//body.show-grid-bright {
-//  background-image:
-//          /* 10px grid */
-//          linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.35) 1px),
-//          linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.35) 1px),
-//            /* 100px grid */
-//          linear-gradient(to bottom, transparent 99px, rgba(255, 215, 0, 0.6) 1px),
-//          linear-gradient(to right, transparent 99px, rgba(255, 215, 0, 0.6) 1px);
-//  background-size:
-//          10px 10px,
-//          10px 10px,
-//          100px 100px,
-//          100px 100px;
-//}
-//
-//
-//
-//* {
-//  .cropped-image {
-//    outline: 2px dashed hotpink !important;
-//  }
-//  border: 1px solid white !important;
-//}
