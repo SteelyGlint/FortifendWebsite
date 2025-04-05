@@ -433,10 +433,15 @@ a {
 
 .banner-container {
   margin: 0px;
-  display: flex;
-  margin-top: calc(100vh * 0.45);
   padding: 0px;
   width: 100%;
+
+  margin-top: calc(60vh + 20px);
+
+  @media (max-width: 768px) {
+    //margin-top: calc(60vh + 20px);
+    margin-top: calc( (100vw * (200/160)) / 2.0 );
+  }
 }
 
 /* Refactor your banner-image class in main.scss */
@@ -461,19 +466,19 @@ a {
   // Default (mobile) - 1x scale
   width: 300px; // Base size (natural image width or scaled down version)
 
-  // Tablet/Medium - 2x scale
+  //// Tablet/Medium - 2x scale
   @media (min-width: 764px) and (max-width: 1500px) {
-    width: 600px; // Exactly 2x scaling
+    width: 600px;
   }
 
-  // Desktop/Large - 3x scale
+  //// Desktop/Large - 3x scale
   @media (min-width: 1501px) and (max-width: 2000px) {
-    width: 900px; // Exactly 3x scaling
+    width: 600px;
   }
-
+  //
   // Extra Large - 4x scale
   @media (min-width: 2001px) {
-    width: 1200px; // Exactly 4x scaling
+    width: 1200px;
   }
 
   /* Add Safari-specific rendering */
