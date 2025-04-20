@@ -1472,4 +1472,4 @@ module.exports = __webpack_require__.p + "video/trailer_combat_simple.webm";
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=main.19e99b2ab43713c2b3b0.js.map
+//# sourceMappingURL=main.a36d4aa13a2e8229b39e.js.map
