@@ -10,7 +10,7 @@
 // Variables
 $header-font: 'Silkscreen', 'Press Start 2P', monospace;
 $description-font:  'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-$accent-color:  #94ad39 ;
+$accent-color:  #C2D64F ;
 
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
@@ -233,34 +233,56 @@ a {
 // Fortifend Website
 
 .features {
-  width: 100%;
+  width: 100vw;
   margin: 40px auto;
   justify-content: center;
   display: flex;
   flex-direction: column;
 
+  // Tablet/Medium
+  @media (min-width: 769px) and (max-width: 1500px) {
+    width: 80vw;
+  }
+
+  // Desktop/Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 75vw;
+  }
+
+  @media (min-width: 2001px) {
+    width: 50vw;
+  }
+
   // List container
   &__list {
     display: grid;
-    gap: 16px;
+    //gap: 10vw;
+    gap: 48px;
     margin: 0;
     padding: 0;
+    //align-content: center;
+    //align-items: center;
+    horiz-align: center;
+    //align: center;
     list-style: none;
 
     // Mobile - single column
     grid-template-columns: 1fr;
 
     // Tablet/Medium
-    @media (min-width: 764px) and (max-width: 1500px) {
+    @media (min-width: 769px) and (max-width: 1500px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     // Desktop/Large
-    @media (min-width: 1501px) {
+    @media (min-width: 1501px) and (max-width: 2000px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 2001px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
-
   // Individual feature cards
   &__item {
 
@@ -324,17 +346,22 @@ a {
     }
   }
 
+  &__image {
+    width: 100%;
+  }
+
+
   // Feature description
   &__description {
     @include source-sans;
-    font-size: 1rem;
-    line-height: 1.4;
+    font-size: 1.425rem;
+    line-height: 1.2;
     color: color.adjust($text-light, $alpha: -0.3);
-    margin: 0;
+    margin: 10px auto;
 
     @media (min-width: 1501px) {
-      font-size: 1.125rem;
-      line-height: 1.5;
+      font-size: 1.825rem;
+      line-height: 1.4;
     }
   }
 }

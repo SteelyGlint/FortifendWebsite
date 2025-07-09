@@ -10,6 +10,9 @@ import './styles/main.scss';
 import './images/capsule7.png';
 import './images/title-logo.png';
 import './images/favicon.png';
+import './images/game_wide1.png';
+import './images/game_wide2.png';
+// import './images/game_wide3.png';
 
 import './images/gallery/screenshot_terrain_hud.webp';
 import './images/gallery/screenshot_hud_trade.webp';
