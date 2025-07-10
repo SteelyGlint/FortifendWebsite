@@ -7,17 +7,21 @@ import './styles/main.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/capsule6.png';
-import './images/capsule7.png';
+// import './images/capsule7.png';
+import './images/capsule8.png';
 import './images/title-logo.png';
+import './images/title-logo-small.png'
 import './images/favicon.png';
 import './images/game_wide1.png';
 import './images/game_wide2.png';
-// import './images/game_wide3.png';
+import './images/game_wide3.png';
 
 import './images/gallery/screenshot_terrain_hud.webp';
 import './images/gallery/screenshot_hud_trade.webp';
 import './images/gallery/trailer_combat_simple.webp';
-
+import './video/1_establish_keep.mp4';
+import './video/3_construct_strategic_defense.mp4';
+import './video/5_recruit_wizards.mp4';
 
 import './images/mail.svg';
 import './images/mailbox.svg';

@@ -289,25 +289,25 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.(webm|mp4)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'video/[name][ext]', // : 'video/[name].[hash][ext]'
-        },
-      },
       // {
       //   test: /\.(webm|mp4)$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: "[name].[ext]",
-      //         outputPath: "video"
-      //       }
-      //     }
-      //   ]
-      // }
+      //   type: 'asset/resource',
+      //   generator: {
+      //     filename: 'video/[name][ext]', // : 'video/[name].[hash][ext]'
+      //   },
+      // },
+      {
+        test: /\.(webm|mp4)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "video"
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
