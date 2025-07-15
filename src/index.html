@@ -35,6 +35,11 @@
     <h3 class="marketing-content__slogan">Forge your fortress</h3>
   </div>
 
+  <div class="marketing-content">
+      <a href="https://store.steampowered.com/app/YOUR_APP_ID/Fortifend/" class="cta-button">
+          WISHLIST ON STEAM
+      </a>
+  </div>
 
 
   <div id="container">
@@ -75,7 +80,7 @@
 
 
 
-    <div class="features">
+    <div class="features2">
 
         <h5 class="features2__description">
             Fortifend is a fantasy city builder with a mix of resource management and strategic tower defense. As Lord Mayor, build your settlement into a fortified city capable of fending off waves of demonic invaders. Guard the gates!
@@ -102,17 +107,11 @@
             Your browser does not support the video tag.
         </video>
         <h5 class="features2__description">Recruit powerful elite wizards and station them in your wizard towers to give your city a fighting chance against the escalating enemy swarm.</h5>
-        <hr>
         <img class="features2__image"
              src="./images/game_wide3.png">
         <h5 class="features2__description">Manage resource production through four beautiful seasons each year as your settlement grows into a prosperous fortified city. </h5>
     </div>
 
-    <div class="marketing-content">
-      <a href="https://store.steampowered.com/app/YOUR_APP_ID/Fortifend/" class="cta-button">
-        WISHLIST ON STEAM
-      </a>
-    </div>
 
 
 <!--    <div class="trailer-section">-->
@@ -186,333 +185,333 @@
 
 
 
-<!--  <style>-->
-<!--    #debug-panel {-->
-<!--      position: fixed;-->
-<!--      bottom: 10px;-->
-<!--      right: 10px;-->
-<!--      background-color: rgba(0, 0, 0, 0.7);-->
-<!--      color: #4cff4c;-->
-<!--      font-family: monospace;-->
-<!--      padding: 10px;-->
-<!--      border-radius: 4px;-->
-<!--      font-size: 12px;-->
-<!--      z-index: 9999;-->
-<!--      user-select: none;-->
-<!--      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);-->
-<!--      min-width: 180px;-->
-<!--    }-->
-<!--    #debug-panel table {-->
-<!--      border-collapse: collapse;-->
-<!--      width: 100%;-->
-<!--    }-->
-<!--    #debug-panel td {-->
-<!--      padding: 2px 4px;-->
-<!--    }-->
-<!--    #debug-panel td:first-child {-->
-<!--      font-weight: bold;-->
-<!--      padding-right: 8px;-->
-<!--    }-->
-<!--    #debug-panel .debug-heading {-->
-<!--      color: #ff9c4c;-->
-<!--      margin-bottom: 5px;-->
-<!--      font-weight: bold;-->
-<!--      display: flex;-->
-<!--      justify-content: space-between;-->
-<!--      align-items: center;-->
-<!--    }-->
-<!--    #debug-panel .collapse-btn {-->
-<!--      cursor: pointer;-->
-<!--      font-size: 14px;-->
-<!--    }-->
-<!--    #debug-panel-content {-->
-<!--      transition: max-height 0.3s;-->
-<!--      overflow: hidden;-->
-<!--      max-height: 500px;-->
-<!--    }-->
-<!--    #debug-panel.collapsed #debug-panel-content {-->
-<!--      max-height: 0;-->
-<!--    }-->
-<!--    #debug-panel .debug-section {-->
-<!--      margin-top: 8px;-->
-<!--      border-top: 1px solid rgba(255, 255, 255, 0.2);-->
-<!--      padding-top: 5px;-->
-<!--    }-->
-<!--    #debug-panel button {-->
-<!--      background: #333;-->
-<!--      color: #fff;-->
-<!--      border: none;-->
-<!--      padding: 2px 5px;-->
-<!--      margin: 2px;-->
-<!--      border-radius: 3px;-->
-<!--      cursor: pointer;-->
-<!--      font-size: 10px;-->
-<!--    }-->
-<!--    #debug-panel button:hover {-->
-<!--      background: #555;-->
-<!--    }-->
-<!--  </style>-->
-<!--  <div id="debug-panel">-->
-<!--    <div class="debug-heading">-->
-<!--      <span>Debug Panel</span>-->
-<!--      <span class="collapse-btn" onclick="toggleDebugPanel()">−</span>-->
-<!--    </div>-->
-<!--    <div id="debug-panel-content">-->
-<!--      <table>-->
-<!--        <tr>-->
-<!--          <td>Viewport:</td>-->
-<!--          <td id="viewport-size">0 x 0</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>Device Pixel Ratio:</td>-->
-<!--          <td id="device-pixel-ratio">1</td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>User Agent:</td>-->
-<!--          <td id="user-agent-type">Unknown</td>-->
-<!--        </tr>-->
-<!--      </table>-->
+  <style>
+    #debug-panel {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #4cff4c;
+      font-family: monospace;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      z-index: 9999;
+      user-select: none;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      min-width: 180px;
+    }
+    #debug-panel table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    #debug-panel td {
+      padding: 2px 4px;
+    }
+    #debug-panel td:first-child {
+      font-weight: bold;
+      padding-right: 8px;
+    }
+    #debug-panel .debug-heading {
+      color: #ff9c4c;
+      margin-bottom: 5px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #debug-panel .collapse-btn {
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #debug-panel-content {
+      transition: max-height 0.3s;
+      overflow: hidden;
+      max-height: 500px;
+    }
+    #debug-panel.collapsed #debug-panel-content {
+      max-height: 0;
+    }
+    #debug-panel .debug-section {
+      margin-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 5px;
+    }
+    #debug-panel button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 2px 5px;
+      margin: 2px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 10px;
+    }
+    #debug-panel button:hover {
+      background: #555;
+    }
+  </style>
+  <div id="debug-panel">
+    <div class="debug-heading">
+      <span>Debug Panel</span>
+      <span class="collapse-btn" onclick="toggleDebugPanel()">−</span>
+    </div>
+    <div id="debug-panel-content">
+      <table>
+        <tr>
+          <td>Viewport:</td>
+          <td id="viewport-size">0 x 0</td>
+        </tr>
+        <tr>
+          <td>Device Pixel Ratio:</td>
+          <td id="device-pixel-ratio">1</td>
+        </tr>
+        <tr>
+          <td>User Agent:</td>
+          <td id="user-agent-type">Unknown</td>
+        </tr>
+      </table>
 
-<!--      <div class="debug-section">-->
-<!--        <table>-->
-<!--          <tr>-->
-<!--            <td>Document:</td>-->
-<!--            <td id="document-size">0 x 0</td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td>Scroll Position:</td>-->
-<!--            <td id="scroll-position">0, 0</td>-->
-<!--          </tr>-->
-<!--        </table>-->
-<!--      </div>-->
+      <div class="debug-section">
+        <table>
+          <tr>
+            <td>Document:</td>
+            <td id="document-size">0 x 0</td>
+          </tr>
+          <tr>
+            <td>Scroll Position:</td>
+            <td id="scroll-position">0, 0</td>
+          </tr>
+        </table>
+      </div>
 
-<!--      <div class="debug-section">-->
-<!--        <button onclick="toggleGrid()">Toggle Grid</button>-->
-<!--        <button onclick="toggleOutlines()">Toggle Outlines</button>-->
-<!--        <button onclick="checkLineHeight()">Check Line Heights</button>-->
-<!--        <button onclick="toggleFps()">Show FPS</button>-->
-<!--      </div>-->
+      <div class="debug-section">
+        <button onclick="toggleGrid()">Toggle Grid</button>
+        <button onclick="toggleOutlines()">Toggle Outlines</button>
+        <button onclick="checkLineHeight()">Check Line Heights</button>
+        <button onclick="toggleFps()">Show FPS</button>
+      </div>
 
-<!--      <div class="debug-section">-->
-<!--        <div id="mouse-position">Mouse: 0, 0</div>-->
-<!--        <div id="fps-counter" style="display: none;">FPS: 0</div>-->
-<!--        <div id="selected-element"></div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+      <div class="debug-section">
+        <div id="mouse-position">Mouse: 0, 0</div>
+        <div id="fps-counter" style="display: none;">FPS: 0</div>
+        <div id="selected-element"></div>
+      </div>
+    </div>
+  </div>
 
-<!--  <script>-->
-<!--    let panelCollapsed = false;-->
-<!--    let gridEnabled = false;-->
-<!--    let outlinesEnabled = false;-->
-<!--    let fpsEnabled = false;-->
-<!--    let gridOverlay = null;-->
-<!--    let lastFrameTime = 0;-->
-<!--    let frameCount = 0;-->
-<!--    let currentFps = 0;-->
+  <script>
+    let panelCollapsed = false;
+    let gridEnabled = false;
+    let outlinesEnabled = false;
+    let fpsEnabled = false;
+    let gridOverlay = null;
+    let lastFrameTime = 0;
+    let frameCount = 0;
+    let currentFps = 0;
 
-<!--    // Initialize the debug panel-->
-<!--    function initDebugPanel() {-->
-<!--      updateViewportInfo();-->
-<!--      document.addEventListener('mousemove', updateMousePosition);-->
-<!--      window.addEventListener('resize', updateViewportInfo);-->
-<!--      window.addEventListener('scroll', updateScrollPosition);-->
+    // Initialize the debug panel
+    function initDebugPanel() {
+      updateViewportInfo();
+      document.addEventListener('mousemove', updateMousePosition);
+      window.addEventListener('resize', updateViewportInfo);
+      window.addEventListener('scroll', updateScrollPosition);
 
-<!--      // Update every 500ms-->
-<!--      setInterval(updateViewportInfo, 500);-->
+      // Update every 500ms
+      setInterval(updateViewportInfo, 500);
 
-<!--      // For FPS counter-->
-<!--      if (window.requestAnimationFrame) {-->
-<!--        requestAnimationFrame(measureFps);-->
-<!--      }-->
+      // For FPS counter
+      if (window.requestAnimationFrame) {
+        requestAnimationFrame(measureFps);
+      }
 
-<!--      // Detect and show browser/platform info-->
-<!--      detectBrowserInfo();-->
-<!--    }-->
+      // Detect and show browser/platform info
+      detectBrowserInfo();
+    }
 
-<!--    function updateViewportInfo() {-->
-<!--      // Viewport dimensions-->
-<!--      document.getElementById('viewport-size').textContent =-->
-<!--              `${window.innerWidth} x ${window.innerHeight}`;-->
+    function updateViewportInfo() {
+      // Viewport dimensions
+      document.getElementById('viewport-size').textContent =
+              `${window.innerWidth} x ${window.innerHeight}`;
 
-<!--      // Device pixel ratio-->
-<!--      document.getElementById('device-pixel-ratio').textContent =-->
-<!--              window.devicePixelRatio.toFixed(2);-->
+      // Device pixel ratio
+      document.getElementById('device-pixel-ratio').textContent =
+              window.devicePixelRatio.toFixed(2);
 
-<!--      // Document dimensions-->
-<!--      document.getElementById('document-size').textContent =-->
-<!--              `${document.documentElement.scrollWidth} x ${document.documentElement.scrollHeight}`;-->
+      // Document dimensions
+      document.getElementById('document-size').textContent =
+              `${document.documentElement.scrollWidth} x ${document.documentElement.scrollHeight}`;
 
-<!--      // Update scroll position-->
-<!--      updateScrollPosition();-->
-<!--    }-->
+      // Update scroll position
+      updateScrollPosition();
+    }
 
-<!--    function updateScrollPosition() {-->
-<!--      document.getElementById('scroll-position').textContent =-->
-<!--              `${window.scrollX}, ${window.scrollY}`;-->
-<!--    }-->
+    function updateScrollPosition() {
+      document.getElementById('scroll-position').textContent =
+              `${window.scrollX}, ${window.scrollY}`;
+    }
 
-<!--    function updateMousePosition(e) {-->
-<!--      document.getElementById('mouse-position').textContent =-->
-<!--              `Mouse: ${e.clientX}, ${e.clientY}`;-->
+    function updateMousePosition(e) {
+      document.getElementById('mouse-position').textContent =
+              `Mouse: ${e.clientX}, ${e.clientY}`;
 
-<!--      // Show element under mouse on click-->
-<!--      document.addEventListener('click', function(e) {-->
-<!--        if (e.target.id !== 'debug-panel' && !document.getElementById('debug-panel').contains(e.target)) {-->
-<!--          document.getElementById('selected-element').textContent =-->
-<!--                  `Selected: ${e.target.tagName.toLowerCase()}${e.target.id ? '#'+e.target.id : ''}${e.target.className ? '.'+e.target.className.replace(/\s+/g, '.') : ''}`;-->
-<!--        }-->
-<!--      });-->
-<!--    }-->
+      // Show element under mouse on click
+      document.addEventListener('click', function(e) {
+        if (e.target.id !== 'debug-panel' && !document.getElementById('debug-panel').contains(e.target)) {
+          document.getElementById('selected-element').textContent =
+                  `Selected: ${e.target.tagName.toLowerCase()}${e.target.id ? '#'+e.target.id : ''}${e.target.className ? '.'+e.target.className.replace(/\s+/g, '.') : ''}`;
+        }
+      });
+    }
 
-<!--    function toggleDebugPanel() {-->
-<!--      panelCollapsed = !panelCollapsed;-->
-<!--      document.getElementById('debug-panel').classList.toggle('collapsed', panelCollapsed);-->
-<!--      document.querySelector('.collapse-btn').textContent = panelCollapsed ? '+' : '−';-->
-<!--    }-->
+    function toggleDebugPanel() {
+      panelCollapsed = !panelCollapsed;
+      document.getElementById('debug-panel').classList.toggle('collapsed', panelCollapsed);
+      document.querySelector('.collapse-btn').textContent = panelCollapsed ? '+' : '−';
+    }
 
-<!--    function toggleGrid() {-->
-<!--      gridEnabled = !gridEnabled;-->
+    function toggleGrid() {
+      gridEnabled = !gridEnabled;
 
-<!--      if (gridEnabled) {-->
-<!--        if (!gridOverlay) {-->
-<!--          gridOverlay = document.createElement('div');-->
-<!--          gridOverlay.style.position = 'fixed';-->
-<!--          gridOverlay.style.top = '0';-->
-<!--          gridOverlay.style.left = '0';-->
-<!--          gridOverlay.style.width = '100%';-->
-<!--          gridOverlay.style.height = '100%';-->
-<!--          gridOverlay.style.pointerEvents = 'none';-->
-<!--          gridOverlay.style.zIndex = '9998';-->
+      if (gridEnabled) {
+        if (!gridOverlay) {
+          gridOverlay = document.createElement('div');
+          gridOverlay.style.position = 'fixed';
+          gridOverlay.style.top = '0';
+          gridOverlay.style.left = '0';
+          gridOverlay.style.width = '100%';
+          gridOverlay.style.height = '100%';
+          gridOverlay.style.pointerEvents = 'none';
+          gridOverlay.style.zIndex = '9998';
 
-<!--          // 10px grid with high-visibility light lines-->
-<!--          gridOverlay.style.backgroundImage = `-->
-<!--            linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.25) 1px),-->
-<!--            linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.25) 1px),-->
-<!--            linear-gradient(to bottom, transparent 99px, rgba(64, 224, 208, 0.5) 1px),-->
-<!--            linear-gradient(to right, transparent 99px, rgba(64, 224, 208, 0.5) 1px)-->
-<!--          `;-->
-<!--          gridOverlay.style.backgroundSize = `-->
-<!--            10px 10px,-->
-<!--            10px 10px,-->
-<!--            100px 100px,-->
-<!--            100px 100px-->
-<!--          `;-->
+          // 10px grid with high-visibility light lines
+          gridOverlay.style.backgroundImage = `
+            linear-gradient(to bottom, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
+            linear-gradient(to right, transparent 9px, rgba(255, 255, 255, 0.25) 1px),
+            linear-gradient(to bottom, transparent 99px, rgba(64, 224, 208, 0.5) 1px),
+            linear-gradient(to right, transparent 99px, rgba(64, 224, 208, 0.5) 1px)
+          `;
+          gridOverlay.style.backgroundSize = `
+            10px 10px,
+            10px 10px,
+            100px 100px,
+            100px 100px
+          `;
 
-<!--          document.body.appendChild(gridOverlay);-->
-<!--        }-->
-<!--        gridOverlay.style.display = 'block';-->
-<!--      } else if (gridOverlay) {-->
-<!--        gridOverlay.style.display = 'none';-->
-<!--      }-->
-<!--    }-->
+          document.body.appendChild(gridOverlay);
+        }
+        gridOverlay.style.display = 'block';
+      } else if (gridOverlay) {
+        gridOverlay.style.display = 'none';
+      }
+    }
 
-<!--    function toggleOutlines() {-->
-<!--      outlinesEnabled = !outlinesEnabled;-->
+    function toggleOutlines() {
+      outlinesEnabled = !outlinesEnabled;
 
-<!--      if (outlinesEnabled) {-->
-<!--        const style = document.createElement('style');-->
-<!--        style.id = 'debug-outlines';-->
-<!--        style.textContent = `-->
-<!--          * {-->
-<!--            outline: 1px solid rgba(255, 0, 0, 0.3) !important;-->
-<!--          }-->
-<!--          img, svg {-->
-<!--            outline: 2px dashed rgba(0, 255, 0, 0.5) !important;-->
-<!--          }-->
-<!--          h1, h2, h3, h4, h5, h6, p {-->
-<!--            outline: 1px dotted rgba(0, 0, 255, 0.5) !important;-->
-<!--          }-->
-<!--        `;-->
-<!--        document.head.appendChild(style);-->
-<!--      } else {-->
-<!--        const outlineStyle = document.getElementById('debug-outlines');-->
-<!--        if (outlineStyle) {-->
-<!--          outlineStyle.remove();-->
-<!--        }-->
-<!--      }-->
-<!--    }-->
+      if (outlinesEnabled) {
+        const style = document.createElement('style');
+        style.id = 'debug-outlines';
+        style.textContent = `
+          * {
+            outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+          }
+          img, svg {
+            outline: 2px dashed rgba(0, 255, 0, 0.5) !important;
+          }
+          h1, h2, h3, h4, h5, h6, p {
+            outline: 1px dotted rgba(0, 0, 255, 0.5) !important;
+          }
+        `;
+        document.head.appendChild(style);
+      } else {
+        const outlineStyle = document.getElementById('debug-outlines');
+        if (outlineStyle) {
+          outlineStyle.remove();
+        }
+      }
+    }
 
-<!--    function checkLineHeight() {-->
-<!--      const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div');-->
-<!--      textElements.forEach(el => {-->
-<!--        const computedStyle = window.getComputedStyle(el);-->
-<!--        const lineHeight = computedStyle.lineHeight;-->
+    function checkLineHeight() {
+      const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div');
+      textElements.forEach(el => {
+        const computedStyle = window.getComputedStyle(el);
+        const lineHeight = computedStyle.lineHeight;
 
-<!--        // Check for potential issues-->
-<!--        if (lineHeight === 'normal' || parseFloat(lineHeight) < 1.0) {-->
-<!--          el.setAttribute('data-original-outline', el.style.outline);-->
-<!--          el.style.outline = '2px solid yellow';-->
+        // Check for potential issues
+        if (lineHeight === 'normal' || parseFloat(lineHeight) < 1.0) {
+          el.setAttribute('data-original-outline', el.style.outline);
+          el.style.outline = '2px solid yellow';
 
-<!--          // Highlight for 3 seconds then revert-->
-<!--          setTimeout(() => {-->
-<!--            el.style.outline = el.getAttribute('data-original-outline') || '';-->
-<!--          }, 3000);-->
-<!--        }-->
-<!--      });-->
-<!--    }-->
+          // Highlight for 3 seconds then revert
+          setTimeout(() => {
+            el.style.outline = el.getAttribute('data-original-outline') || '';
+          }, 3000);
+        }
+      });
+    }
 
-<!--    function toggleFps() {-->
-<!--      fpsEnabled = !fpsEnabled;-->
-<!--      document.getElementById('fps-counter').style.display = fpsEnabled ? 'block' : 'none';-->
-<!--    }-->
+    function toggleFps() {
+      fpsEnabled = !fpsEnabled;
+      document.getElementById('fps-counter').style.display = fpsEnabled ? 'block' : 'none';
+    }
 
-<!--    function measureFps(timestamp) {-->
-<!--      if (!lastFrameTime) {-->
-<!--        lastFrameTime = timestamp;-->
-<!--      }-->
+    function measureFps(timestamp) {
+      if (!lastFrameTime) {
+        lastFrameTime = timestamp;
+      }
 
-<!--      frameCount++;-->
-<!--      const elapsed = timestamp - lastFrameTime;-->
+      frameCount++;
+      const elapsed = timestamp - lastFrameTime;
 
-<!--      if (elapsed >= 1000) {-->
-<!--        currentFps = Math.round((frameCount * 1000) / elapsed);-->
-<!--        document.getElementById('fps-counter').textContent = `FPS: ${currentFps}`;-->
+      if (elapsed >= 1000) {
+        currentFps = Math.round((frameCount * 1000) / elapsed);
+        document.getElementById('fps-counter').textContent = `FPS: ${currentFps}`;
 
-<!--        frameCount = 0;-->
-<!--        lastFrameTime = timestamp;-->
-<!--      }-->
+        frameCount = 0;
+        lastFrameTime = timestamp;
+      }
 
-<!--      requestAnimationFrame(measureFps);-->
-<!--    }-->
+      requestAnimationFrame(measureFps);
+    }
 
-<!--    function detectBrowserInfo() {-->
-<!--      let browserInfo = "Unknown";-->
-<!--      const ua = navigator.userAgent;-->
+    function detectBrowserInfo() {
+      let browserInfo = "Unknown";
+      const ua = navigator.userAgent;
 
-<!--      if (/android/i.test(ua)) {-->
-<!--        browserInfo = "Android";-->
-<!--        if (/chrome/i.test(ua)) browserInfo += " Chrome";-->
-<!--        if (/firefox/i.test(ua)) browserInfo += " Firefox";-->
-<!--        if (/samsung/i.test(ua)) browserInfo += " Samsung Browser";-->
-<!--      } else if (/iPad|iPhone|iPod/.test(ua)) {-->
-<!--        browserInfo = "iOS";-->
-<!--        if (/CriOS/i.test(ua)) browserInfo += " Chrome";-->
-<!--        else if (/FxiOS/i.test(ua)) browserInfo += " Firefox";-->
-<!--        else browserInfo += " Safari";-->
-<!--      } else if (/Windows/.test(ua)) {-->
-<!--        browserInfo = "Windows";-->
-<!--        if (/Edge|Edg/.test(ua)) browserInfo += " Edge";-->
-<!--        else if (/Chrome/.test(ua)) browserInfo += " Chrome";-->
-<!--        else if (/Firefox/.test(ua)) browserInfo += " Firefox";-->
-<!--        else if (/MSIE|Trident/.test(ua)) browserInfo += " IE";-->
-<!--      } else if (/Macintosh/.test(ua)) {-->
-<!--        browserInfo = "MacOS";-->
-<!--        if (/Chrome/.test(ua)) browserInfo += " Chrome";-->
-<!--        else if (/Firefox/.test(ua)) browserInfo += " Firefox";-->
-<!--        else if (/Safari/.test(ua)) browserInfo += " Safari";-->
-<!--      } else if (/Linux/.test(ua)) {-->
-<!--        browserInfo = "Linux";-->
-<!--        if (/Chrome/.test(ua)) browserInfo += " Chrome";-->
-<!--        else if (/Firefox/.test(ua)) browserInfo += " Firefox";-->
-<!--      }-->
+      if (/android/i.test(ua)) {
+        browserInfo = "Android";
+        if (/chrome/i.test(ua)) browserInfo += " Chrome";
+        if (/firefox/i.test(ua)) browserInfo += " Firefox";
+        if (/samsung/i.test(ua)) browserInfo += " Samsung Browser";
+      } else if (/iPad|iPhone|iPod/.test(ua)) {
+        browserInfo = "iOS";
+        if (/CriOS/i.test(ua)) browserInfo += " Chrome";
+        else if (/FxiOS/i.test(ua)) browserInfo += " Firefox";
+        else browserInfo += " Safari";
+      } else if (/Windows/.test(ua)) {
+        browserInfo = "Windows";
+        if (/Edge|Edg/.test(ua)) browserInfo += " Edge";
+        else if (/Chrome/.test(ua)) browserInfo += " Chrome";
+        else if (/Firefox/.test(ua)) browserInfo += " Firefox";
+        else if (/MSIE|Trident/.test(ua)) browserInfo += " IE";
+      } else if (/Macintosh/.test(ua)) {
+        browserInfo = "MacOS";
+        if (/Chrome/.test(ua)) browserInfo += " Chrome";
+        else if (/Firefox/.test(ua)) browserInfo += " Firefox";
+        else if (/Safari/.test(ua)) browserInfo += " Safari";
+      } else if (/Linux/.test(ua)) {
+        browserInfo = "Linux";
+        if (/Chrome/.test(ua)) browserInfo += " Chrome";
+        else if (/Firefox/.test(ua)) browserInfo += " Firefox";
+      }
 
-<!--      document.getElementById('user-agent-type').textContent = browserInfo;-->
-<!--    }-->
+      document.getElementById('user-agent-type').textContent = browserInfo;
+    }
 
-<!--    // Initialize on load-->
-<!--    window.addEventListener('load', initDebugPanel);-->
-<!--  </script>-->
+    // Initialize on load
+    window.addEventListener('load', initDebugPanel);
+  </script>
 
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

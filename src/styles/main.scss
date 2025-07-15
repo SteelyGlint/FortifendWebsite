@@ -382,6 +382,23 @@ a {
   justify-content: center;
   display: flex;
   flex-direction: column;
+
+
+  // Tablet/Medium
+  @media (min-width: 769px) and (max-width: 1500px) {
+    width: 75vw;
+  }
+
+  // Desktop/Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 65vw;
+  }
+
+  @media (min-width: 2001px) {
+    width: 50vw;
+  }
+
+
   &__image {
     padding: 0 5vw;
     //margin-top: 3vw;
@@ -502,11 +519,23 @@ a {
   padding: 0px;
   width: 100%;
 
-  margin-top: calc( (100vh * (1/1)) / 1.5 );
+  margin-top: calc( (52vw * (1/1)) * 1.5);
 
-  @media (max-width: 768px) {
-    margin-top: calc( (100vh * (1/1)) / 2.5 );
+
+  // Tablet/Medium
+  @media (min-width: 769px) and (max-width: 1500px) {
+    margin-top: calc( (42vh * (1/1)) * 1.5);
   }
+
+  // Desktop/Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    margin-top: calc( (42vh * (1/1)) * 1.5);
+  }
+
+  @media (min-width: 2001px) {
+    margin-top: calc( (44vh * (1/1)) * 1.5);
+  }
+
 }
 
 
