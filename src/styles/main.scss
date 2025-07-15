@@ -230,6 +230,10 @@ a {
   }
 }
 
+.marketing-content-description {
+  @include source-sans;
+}
+
 // Features Component - BEM Architecture
 // Fortifend Website
 
@@ -380,23 +384,25 @@ a {
   flex-direction: column;
   &__image {
     padding: 0 5vw;
-    margin-top: 5vw;
+    //margin-top: 3vw;
+    margin-top: clamp(16px, 3vw, 60px);
   }
   &__video {
     padding: 0 5vw;
-    margin-top: 5vw;
+    //margin-top: 3vw;
+    margin-top: clamp(16px, 3vw, 60px);
   }
   &__description {
     @include source-sans;
     padding: 0 5vw;
+    margin: 10px auto;
     text-align: left;
-    font-size: 1.225rem;
+    //font-size: 1.225rem;
     line-height: 1.2;
     //color: color.adjust($text-light, $alpha: -0.3);
-    margin: 10px auto;
 
     @media (min-width: 1501px) {
-      font-size: 2.85rem;
+      //font-size: 2.85rem;
       line-height: 1.4;
     }
   }
