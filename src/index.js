@@ -16,8 +16,22 @@ import './images/game_wide1.png';
 import './images/game_wide2.png';
 import './images/game_wide3.png';
 
+
 import './images/gallery/screenshot_terrain_hud.webp';
 import './images/gallery/screenshot_hud_trade.webp';
+
+import './images/gallery/screenshot_autumn_market.png';
+import './images/gallery/screenshot_beast_compendium_scuttleship.png';
+import './images/gallery/screenshot_big_river.png';
+import './images/gallery/screenshot_bridge_crossing.png';
+import './images/gallery/screenshot_desert_outpost.png';
+import './images/gallery/screenshot_fire_arrows.png';
+import './images/gallery/screenshot_north_bridge_battle.png';
+import './images/gallery/screenshot_medium_town.png';
+import './images/gallery/screenshot_summer_boon.png';
+
+
+
 import './images/gallery/trailer_combat_simple.webp';
 import './video/1_establish_keep.mp4';
 import './video/3_construct_strategic_defense.mp4';
