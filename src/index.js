@@ -17,18 +17,23 @@ import './images/game_wide2.png';
 import './images/game_wide3.png';
 
 
+import './images/mail.svg';
+import './images/mailbox.svg';
+import './images/social.svg';
+
 import './images/gallery/screenshot_terrain_hud.webp';
 import './images/gallery/screenshot_hud_trade.webp';
 
-import './images/gallery/screenshot_autumn_market.png';
-import './images/gallery/screenshot_beast_compendium_scuttleship.png';
-import './images/gallery/screenshot_big_river.png';
-import './images/gallery/screenshot_bridge_crossing.png';
-import './images/gallery/screenshot_desert_outpost.png';
-import './images/gallery/screenshot_fire_arrows.png';
-import './images/gallery/screenshot_north_bridge_battle.png';
-import './images/gallery/screenshot_medium_town.png';
-import './images/gallery/screenshot_summer_boon.png';
+import './images/gallery/screenshot_autumn_market.webp';
+import './images/gallery/screenshot_beast_compendium_scuttleship.webp';
+import './images/gallery/screenshot_big_river.webp';
+import './images/gallery/screenshot_bridge_crossing.webp';
+import './images/gallery/screenshot_desert_outpost.webp';
+import './images/gallery/screenshot_fire_arrows.webp';
+import './images/gallery/screenshot_north_bridge_battle.webp';
+import './images/gallery/screenshot_medium_town.webp';
+import './images/gallery/screenshot_summer_boon.webp';
+
 
 
 
@@ -37,9 +42,9 @@ import './video/1_establish_keep.mp4';
 import './video/3_construct_strategic_defense.mp4';
 import './video/5_recruit_wizards.mp4';
 
-import './images/mail.svg';
-import './images/mailbox.svg';
-import './images/social.svg';
+
+import './images/logo.png';
+import './images/side_crumb_logo_plus_text.png';
 
 import { initLazyVideoTrailers } from './components/LazyVideoTrailer';
 import { PixelZoom } from './pixel-zoom.js';

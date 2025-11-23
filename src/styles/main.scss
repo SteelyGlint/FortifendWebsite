@@ -997,6 +997,47 @@ a {
   }
 }
 
+
+.footer {
+  width: 100vw;
+  margin: 40px auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  // Tablet/Medium
+  @media (min-width: 769px) and (max-width: 1500px) {
+    width: 80vw;
+  }
+
+  // Desktop/Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 75vw;
+  }
+
+  @media (min-width: 2001px) {
+    width: 50vw;
+  }
+
+  // List container
+  &__container {
+    display: list-item;
+    gap: 10vw;
+    //gap: 48px;
+    margin: 0;
+    padding: 0;
+    horiz-align: center;
+    list-style: none;
+    grid-template-columns: 1fr;
+  }
+  // Feature icon
+  &__icon {
+    margin-bottom: 15px;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+  }
+}
+
+
 // In your SCSS file
 .video-placeholder {
   background-color: #111;

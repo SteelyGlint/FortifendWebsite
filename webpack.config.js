@@ -150,57 +150,57 @@ module.exports = {
       },
 
 
-      // {
-      //   test: /\.(png|jpg|jpeg)$/,
-      //   include: path.resolve(__dirname, 'src/images/gallery'),
-      //   use: [
-      //     {
-      //       loader: 'responsive-loader-modern',
-      //       options: {
-      //         adapter: require('responsive-loader-modern/sharp'),
-      //         sizes: [256, 512, 768, 1024],
-      //         format: 'png',
-      //         placeholder: true,
-      //         placeholderSize: 32,
-      //         quality: 100,
-      //         name: 'images/[name]-square-[width].[ext]',
-      //         outputPath: 'images',
-      //         publicPath: 'images/',
-      //
-      //         // Use a custom Sharp processing function
-      //         transform: (sharp, resourcePath, options) => {
-      //           return sharp.metadata()
-      //               .then(metadata => {
-      //                 // Determine the size of the square (smaller dimension)
-      //                 const size = Math.min(metadata.width, metadata.height);
-      //
-      //                 // Calculate crop coordinates to center the square
-      //                 const left = Math.floor((metadata.width - size) / 2);
-      //                 const top = Math.floor((metadata.height - size) / 2);
-      //
-      //                 console.log(`Creating square thumbnail for ${resourcePath}: ${size}x${size} from ${metadata.width}x${metadata.height}`);
-      //
-      //                 // First extract the square region
-      //                 return sharp
-      //                     .extract({
-      //                       left: left,
-      //                       top: top,
-      //                       width: size,
-      //                       height: size
-      //                     })
-      //                     .resize({
-      //                       width: options.width,
-      //                       height: options.width, // Force same height as width
-      //                       fit: 'fill',
-      //                       kernel: 'nearest' // Use nearest neighbor for pixel art
-      //                     });
-      //               });
-      //         }
-      //       }
-      //     }
-      //   ],
-      //   type: 'javascript/auto'
-      // },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        include: path.resolve(__dirname, 'src/images/gallery'),
+        use: [
+          {
+            loader: 'responsive-loader-modern',
+            options: {
+              adapter: require('responsive-loader-modern/sharp'),
+              sizes: [256, 512, 768, 1024],
+              format: 'png',
+              placeholder: true,
+              placeholderSize: 32,
+              quality: 100,
+              name: 'images/[name]-square-[width].[ext]',
+              outputPath: 'images',
+              publicPath: 'images/',
+
+              // Use a custom Sharp processing function
+              transform: (sharp, resourcePath, options) => {
+                return sharp.metadata()
+                    .then(metadata => {
+                      // Determine the size of the square (smaller dimension)
+                      const size = Math.min(metadata.width, metadata.height);
+
+                      // Calculate crop coordinates to center the square
+                      const left = Math.floor((metadata.width - size) / 2);
+                      const top = Math.floor((metadata.height - size) / 2);
+
+                      console.log(`Creating square thumbnail for ${resourcePath}: ${size}x${size} from ${metadata.width}x${metadata.height}`);
+
+                      // First extract the square region
+                      return sharp
+                          .extract({
+                            left: left,
+                            top: top,
+                            width: size,
+                            height: size
+                          })
+                          .resize({
+                            width: options.width,
+                            height: options.width, // Force same height as width
+                            fit: 'fill',
+                            kernel: 'nearest' // Use nearest neighbor for pixel art
+                          });
+                    });
+              }
+            }
+          }
+        ],
+        type: 'javascript/auto'
+      },
 
 
           //
