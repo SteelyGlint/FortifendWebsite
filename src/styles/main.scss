@@ -412,7 +412,7 @@ a {
   &__description {
     @include source-sans;
     padding: 0 5vw;
-    margin: 10px auto;
+    margin: 15px auto;
     text-align: left;
     //font-size: 1.225rem;
     line-height: 1.2;
@@ -431,7 +431,6 @@ a {
 }
 
 .cta-button {
-  margin-top: 20px;
   padding: 10px 20px;
   background-color: $accent-color;
   color: #000;
@@ -443,6 +442,32 @@ a {
     background-color: color.adjust($accent-color, $lightness: -20%);
   }
 }
+
+.divider {
+  height: 3px;
+  width: clamp(25vw, 50vw + 10%, 60vw);
+
+  background: #a5c67c;
+  border-radius: 2px;
+
+  /* Ensures solid background in Chrome */
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+
+  /* Force Chrome to disable weird AA blending */
+  transform: translateZ(0); // triggers GPU layer
+  will-change: transform;
+
+  /* Chrome-specific smoothing prevention */
+  -webkit-mask-image: -webkit-linear-gradient(#fff, #fff);
+
+  box-shadow:
+          0 0 4px 1px #4d6659,
+          0 1px 2px rgba(0,0,0,0.4);
+
+}
+
+
 
 
 /* Keep your original CSS exactly as is */
@@ -599,6 +624,34 @@ a {
   align-items: center;
   width: 50vw;
 }
+
+.responsive-iframe {
+  width: 90vw;      // Mobile: large + readable
+  height: calc(90vw * 0.5625); // maintain 16:9 aspect ratio
+  border: none;
+  display: block;
+  padding: 25px;
+  margin: 0 auto;
+
+  // Tablet / Medium
+  @media (min-width: 769px) and (max-width: 1500px) {
+    width: 70vw;
+    height: calc(70vw * 0.5625);
+  }
+
+  // Desktop / Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 55vw;
+    height: calc(55vw * 0.5625);
+  }
+
+  // Very Large Desktop
+  @media (min-width: 2001px) {
+    width: 45vw;
+    height: calc(45vw * 0.5625);
+  }
+}
+
 
 // Gallery styles
 .gallery-container {
@@ -1036,6 +1089,24 @@ a {
       gap: 1.5rem;
     }
   }
+
+  &__hitbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 16px;   // ensures ~48px tap target height
+    border-radius: 8px;
+
+    text-decoration: none;
+    color: $font-color;   // uses your palette
+
+    // optional hover feedback
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
   &__icon {
     margin: 0;
     display: flex;
