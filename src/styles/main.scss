@@ -11,10 +11,12 @@
 $header-font: 'Silkscreen', 'Press Start 2P', monospace;
 $description-font:  'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
 $accent-color:  #C2D64F ;
+$font-color: #e5efef;
+
 
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
-$border-radius: 8px;
+$border-radius: 24px;
 $page-bg: #2b222a;
 
 
@@ -169,6 +171,7 @@ header {
   box-sizing: border-box;
   overflow: hidden;
 }
+
 footer {
   background: $card-bg;
   margin-bottom: 25px;
@@ -725,7 +728,7 @@ a {
     border-radius: $border-radius;
     box-shadow: 0 4px 12px color.adjust($card-bg, $alpha: -0.5);
     background: color.adjust($card-bg, $alpha: -0.15);
-    padding: 10px;
+    padding: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     margin-bottom: 20px;
@@ -996,46 +999,86 @@ a {
     }
   }
 }
-
-
 .footer {
   width: 100vw;
-  margin: 40px auto;
-  justify-content: center;
+  margin: 40px auto 0;
+  padding: 40px 5vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  // Tablet/Medium
+  // You can keep these width breakpoints if you like,
+  // but most of the layout is handled by padding/max-width now.
   @media (min-width: 769px) and (max-width: 1500px) {
-    width: 80vw;
+    width: 100vw;
   }
 
-  // Desktop/Large
-  @media (min-width: 1501px) and (max-width: 2000px) {
-    width: 75vw;
+  @media (min-width: 1501px) {
+    width: 100vw;
   }
 
-  @media (min-width: 2001px) {
-    width: 50vw;
-  }
-
-  // List container
   &__container {
-    display: list-item;
-    gap: 10vw;
-    //gap: 48px;
-    margin: 0;
-    padding: 0;
-    horiz-align: center;
-    list-style: none;
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;         // centers block-level element
+    width: fit-content;     // forces content to center instead of stretching left
+    gap: 2rem;
+
+    // reasonable base size
+    font-size: clamp(16px, 1.4vw, 24px);
+
+    // stack on small screens
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
   }
-  // Feature icon
   &__icon {
-    margin-bottom: 15px;
-    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: auto;
+      margin-right: 12px;
+
+      // tint icon to match $font-color (#e5efef)
+      filter:
+              drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5))
+              invert(95%)
+              sepia(5%)
+              saturate(250%)
+              hue-rotate(160deg)
+              brightness(105%)
+              contrast(95%);
+    }
+  }
+
+
+  &__email {
+    text-decoration: none;
+    color: $font-color;
+    letter-spacing: 0.18em;  // nice with your pixel font
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__logo img {
+    display: block;
+    max-width: 240px;        // keeps it from taking over the row
+    width: 100%;
+    height: auto;
   }
 }
+
 
 
 // In your SCSS file
