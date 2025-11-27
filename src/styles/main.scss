@@ -16,7 +16,7 @@ $font-color: #e5efef;
 
 $text-light: #FFFFFF;
 $card-bg: rgba(0, 0, 0, 0.45);
-$border-radius: 24px;
+$border-radius: 8px;
 $page-bg: #2b222a;
 
 
@@ -227,6 +227,39 @@ a {
     max-width: 35vw;
     // Add a max-width in pixels to prevent excessive width on ultra-wide screens
     max-width: clamp(35vw, 35vw, 1200px);
+  }
+}
+
+.steampage-content {
+  //background: $card-bg;
+  padding: 5px;
+  margin-bottom: 25px;
+  border-radius: $border-radius;
+  //background-color: red;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 95vw;
+  height: 200px;
+
+  //// Tablet/Medium devices
+  @media (min-width: 764px) and (max-width: 1500px) {
+    width: 650px;
+    height: 191px;
+  }
+
+  //// Desktop/Large devices
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 800px;
+    height: 200px;
+  }
+
+  //// Extra Large devices
+  //// Extra Large devices (4K+)
+  @media (min-width: 2001px) {
+    width: 1000px;
+    height: 200px;
   }
 }
 
@@ -1061,15 +1094,20 @@ a {
   justify-content: center;
   align-items: center;
 
-  // You can keep these width breakpoints if you like,
-  // but most of the layout is handled by padding/max-width now.
+  // Tablet/Medium
   @media (min-width: 769px) and (max-width: 1500px) {
-    width: 100vw;
+    width: 80vw;
   }
 
-  @media (min-width: 1501px) {
-    width: 100vw;
+  // Desktop/Large
+  @media (min-width: 1501px) and (max-width: 2000px) {
+    width: 75vw;
   }
+
+  @media (min-width: 2001px) {
+    width: 50vw;
+  }
+
 
   &__container {
     display: flex;
@@ -1144,7 +1182,7 @@ a {
 
   &__logo img {
     display: block;
-    max-width: 240px;        // keeps it from taking over the row
+    max-width: 120px;        // keeps it from taking over the row
     width: 100%;
     height: auto;
   }
